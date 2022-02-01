@@ -5,9 +5,6 @@ import getImageUrl from "../lib/getImageUrl";
 import Layout from "../components/Layout";
 
 function ProductListing({ products }) {
-  // ===DONE 1 fetch products from api
-  // 2 get images from firebase
-
   return (
     <Layout>
       <div>
@@ -33,10 +30,8 @@ function ProductListing({ products }) {
               );
             })
           ) : (
-            <p>Getting books</p>
+            <p>Getting products</p>
           )}
-          {/* <CustomImg src="/products/12300-sarı-main.jpg" alt="" />
-        <CustomImg src="/products/12210-sarı.jpg" alt="" /> */}
         </Gallery>
       </div>
     </Layout>
@@ -44,6 +39,9 @@ function ProductListing({ products }) {
 }
 
 export async function getStaticProps() {
+  // ===DONE 1 fetch products from api
+  // ===DONE 2 get images from firebase
+
   const response = await fetch("https://favo-be.herokuapp.com/products");
   const result = await response.json();
   const products = result.products;
