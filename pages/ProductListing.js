@@ -79,8 +79,8 @@ const Gallery = styled.div`
 
 const Product = styled.div`
   transition: 0.3s;
-  max-width: 14rem;
-  height: 27rem;
+  max-width: 16rem;
+  height: 24rem;
   font-size: 0.9rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   display: flex;
