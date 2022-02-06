@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import getImageUrl from "../lib/getImageUrl";
 import Layout from "../components/Layout";
+import Link from "next/link";
 
 function ProductListing({ products }) {
   return (
@@ -14,18 +15,22 @@ function ProductListing({ products }) {
             products.map((p) => {
               return (
                 <Product key={p._id}>
-                  <div className="productImage">
-                    <img src={p.imageUrl} alt={p.name} />
-                  </div>
-                  <div className="productInfo">
-                    <div className="productDetails">
-                      <div>
-                        <p id="code">{p.code}</p>
-                        <p id="name">{p.name}</p>
-                        <p id="fabricType">{p.fabricType}</p>
+                  <Link href={`/productDetails/${p._id}`}>
+                    <a>
+                      <div className="productImage">
+                        <img src={p.imageUrl} alt={p.name} />
                       </div>
-                    </div>
-                  </div>
+                      <div className="productInfo">
+                        <div className="productDetails">
+                          <div>
+                            <p id="code">{p.code}</p>
+                            <p id="name">{p.name}</p>
+                            <p id="fabricType">{p.fabricType}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
                 </Product>
               );
             })
@@ -39,8 +44,8 @@ function ProductListing({ products }) {
 }
 
 export async function getStaticProps() {
-  // ===DONE 1 fetch products from api
-  // ===DONE 2 get images from firebase
+  // fetch products from api
+  // get images from firebase
 
   const response = await fetch("https://favo-be.herokuapp.com/products");
   const result = await response.json();
@@ -57,6 +62,8 @@ export async function getStaticProps() {
 
 const makeListProductsWImages = async (productArr) => {
   // get each image's url and add the new product to the new list
+  // it only gets the main image
+  // other (color) images will be fetched on the single product page
   let pWImages = [];
   for (let i = 0; i < productArr.length; i++) {
     const url = await getImageUrl(productArr[i].imagePath);
@@ -141,11 +148,5 @@ const Product = styled.div`
     }
   }
 `;
-
-// const CustomImg = styled.img`
-//   border-radius: 0.4rem;
-//   object-fit: contain;
-//   width: 14rem;
-// `;
 
 export default ProductListing;
