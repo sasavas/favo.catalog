@@ -1,18 +1,23 @@
+import Link from "next/link";
 import styled from "styled-components";
+import { mainNavLinks } from "../constants/strings";
 
 function MainMenu() {
   return (
     <div>
       <NavMenu>
-        <span>
-          <a href="#">Navigation</a>
-        </span>
-        <span>
-          <a href="#">Menu</a>
-        </span>
-        <span>
-          <a href="#">Links</a>
-        </span>
+        <Link href="#">
+          <a>{mainNavLinks.homepage}</a>
+        </Link>
+        <Link href="#">
+          <a>{mainNavLinks.catalog}</a>
+        </Link>
+        <Link href="#">
+          <a>{mainNavLinks.aboutus}</a>
+        </Link>
+        <Link href="#">
+          <a>{mainNavLinks.contact}</a>
+        </Link>
       </NavMenu>
     </div>
   );
@@ -20,7 +25,11 @@ function MainMenu() {
 
 const NavMenu = styled.nav`
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
+
+  > *:hover {
+    color: rgba(0, 0, 0, 0.6);
+  }
 `;
 
 export default MainMenu;
