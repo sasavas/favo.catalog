@@ -6,10 +6,10 @@ function MainMenu() {
   return (
     <div>
       <NavMenu>
-        <Link href="#">
+        <Link href="/">
           <a>{mainNavLinks.homepage}</a>
         </Link>
-        <Link href="#">
+        <Link href="/ProductListing">
           <a>{mainNavLinks.catalog}</a>
         </Link>
         <Link href="#">

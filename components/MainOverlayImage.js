@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Image from "../components/Image";
+import Image from "./Image";
 import Link from "next/link";
 
-const OverlayImage = () => {
+const MainOverlayImage = () => {
   return (
     <Wrapper>
       <Image
@@ -38,7 +38,7 @@ const OverlayImage = () => {
   );
 };
 
-export default OverlayImage;
+export default MainOverlayImage;
 
 const Wrapper = styled.div`
   position: relative;
@@ -52,8 +52,9 @@ const Wrapper = styled.div`
     background-color: rgba(10, 10, 10, 0.2);
 
     .overlayContent {
-      margin-top: 12rem;
-      margin-left: 10rem;
+      position: absolute;
+      left: 6rem;
+      bottom: 4rem;
 
       h2 {
         font-size: 4rem;
@@ -90,6 +91,26 @@ const Wrapper = styled.div`
           &:hover {
             background: black;
           }
+        }
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .overlayContent {
+        left: 4rem;
+
+        h2 {
+          font-size: 3rem;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .overlayContent {
+        left: 1rem;
+
+        h2 {
+          font-size: 2rem;
         }
       }
     }

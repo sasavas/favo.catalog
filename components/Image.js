@@ -7,18 +7,13 @@ function Image({ src, alt, width, height, objectFit, objectPosition }) {
       src={src}
       alt={alt}
       style={{
-        width: width,
-        height: height,
+        width: width || "auto",
+        height: height || "auto",
         objectFit: objectFit,
         objectPosition: objectPosition,
       }}
     />
   );
 }
-
-// const StyledImage = styled.img`
-//     width: ${props};
-
-// `;
 
 export default Image;

@@ -4,3 +4,8 @@ export const mainNavLinks = {
   aboutus: "Hakkımızda",
   contact: "İletişim",
 };
+
+export const buttonTexts = {
+  seeProducts: "Ürünleri gör",
+  whatsapp: "Whatsapp",
+};
