@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import Image from "./Image";
 import Link from "next/link";
+import useMediaQuery from "../lib/hooks/useMediaQuery";
 
 const MainOverlayImage = () => {
+  const isSmallScreen = useMediaQuery(768);
+
   return (
     <Wrapper>
       <Image
         src="/images/boy-colorful-photoshoot.jpg"
         alt="Boy colorful photo"
         width="100%"
-        height="calc(100vh - 65px - 3.2rem)"
+        height={isSmallScreen ? "26rem" : "calc(100vh - 65px - 3.2rem)"}
         objectFit="cover"
         objectPosition="right top"
       ></Image>
