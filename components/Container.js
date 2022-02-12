@@ -5,7 +5,8 @@ function Container({ children }) {
 }
 
 const Wrapper = styled.div`
-  margin: 1rem 6rem;
+  margin: 0 6rem;
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
   gap: 2rem;
