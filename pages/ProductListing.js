@@ -8,14 +8,14 @@ import Link from "next/link";
 function ProductListing({ products }) {
   return (
     <Layout>
-      <div>
-        <h1>Product list</h1>
+      <Wrapper>
+        <h1>2022 Yaz Kreasyonu</h1>
         <Gallery>
           {products ? (
             products.map((p) => {
               return (
                 <Product key={p._id}>
-                  <Link href={`/productDetails/${p._id}`}>
+                  <Link href={`/ProductDetails/${p._id}`}>
                     <a>
                       <div className="productImage">
                         <img src={p.imageUrl} alt={p.name} />
@@ -23,9 +23,8 @@ function ProductListing({ products }) {
                       <div className="productInfo">
                         <div className="productDetails">
                           <div>
-                            <p id="code">{p.code}</p>
-                            <p id="name">{p.name}</p>
-                            <p id="fabricType">{p.fabricType}</p>
+                            <span id="code">{p.code} </span>
+                            <span id="name">{p.name}</span>
                           </div>
                         </div>
                       </div>
@@ -38,7 +37,7 @@ function ProductListing({ products }) {
             <p>Getting products</p>
           )}
         </Gallery>
-      </div>
+      </Wrapper>
     </Layout>
   );
 }
@@ -74,6 +73,15 @@ const makeListProductsWImages = async (productArr) => {
   return pWImages;
 };
 
+const Wrapper = styled.div`
+  text-align: center;
+
+  h1 {
+    font-weight: normal;
+    margin-bottom: 2rem;
+  }
+`;
+
 const Gallery = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -86,10 +94,9 @@ const Gallery = styled.div`
 
 const Product = styled.div`
   transition: 0.3s;
-  max-width: 16rem;
-  height: 24rem;
+  max-width: 20rem;
+  height: 30rem;
   font-size: 0.9rem;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 
@@ -97,27 +104,20 @@ const Product = styled.div`
     display: block;
   }
 
-  &:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  }
-
   .productImage {
     transition: all 0.3s ease-out;
     overflow: hidden;
     border-radius: inherit;
-    width: 14rem;
-    height: 21rem;
-
-    img {
-      width: 14rem;
-      min-height: 21rem;
-      object-fit: contain;
-    }
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
     &:hover {
-      img {
-        transition: all 0.3s ease-out;
-      }
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      width: 18rem;
+      min-height: 27rem;
+      object-fit: contain;
     }
   }
 
@@ -125,18 +125,11 @@ const Product = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
     align-items: end;
 
     .productDetails {
-      margin: 0.4rem 0.6rem;
-      flex: 8;
-      overflow: hidden;
-
-      #fabricInfo {
-        display: flex;
-        justify-content: space-between;
-      }
+      margin-top: 1rem;
 
       #code {
         font-weight: bold;

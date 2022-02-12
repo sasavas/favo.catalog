@@ -11,17 +11,6 @@ const Wrapper = styled.div`
   justify-content: center;
   gap: 2rem;
 
-  .filterMenu {
-    background-color: #dedede;
-    padding: 1rem;
-    flex: 1;
-    min-width: 16rem;
-  }
-
-  .mainContent {
-    flex: 4;
-  }
-
   @media (max-width: 1080px) {
     margin: 1rem;
   }
