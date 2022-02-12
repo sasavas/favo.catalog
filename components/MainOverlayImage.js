@@ -52,7 +52,7 @@ const Wrapper = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(10, 10, 10, 0.2);
+    background-color: rgba(10, 10, 10, 0.02);
 
     .overlayContent {
       position: absolute;
