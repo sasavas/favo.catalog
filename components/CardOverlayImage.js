@@ -35,6 +35,7 @@ export default CardOverlayImage;
 const Wrapper = styled.div`
   position: relative;
   min-width: 16rem;
+  max-width: 28rem;
 
   .overlay {
     position: absolute;
@@ -77,6 +78,6 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    /* height: 12rem; */
+    max-width: 36rem;
   }
 `;
