@@ -7,6 +7,7 @@ function Container({ children }) {
 const Wrapper = styled.div`
   margin: 1rem 6rem;
   display: flex;
+  justify-content: center;
   gap: 2rem;
 
   .filterMenu {

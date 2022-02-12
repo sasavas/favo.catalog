@@ -2,18 +2,23 @@ import styled from "styled-components";
 import Container from "./Container";
 import Image from "next/image";
 import MainMenu from "./MainMenu";
+import Link from "next/link";
 
 function Banner() {
   return (
     <Wrapper>
       <Container>
         <FlexContainer>
-          <Image
-            src="/favologosade.png"
-            alt="Favo Kids Logo"
-            width="124"
-            height="65"
-          />
+          <Link href="/">
+            <a>
+              <Image
+                src="/favologosade.png"
+                alt="Favo Kids Logo"
+                width="124"
+                height="65"
+              />
+            </a>
+          </Link>
           <MainMenu className="mainMenu"></MainMenu>
         </FlexContainer>
       </Container>
