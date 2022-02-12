@@ -8,7 +8,6 @@ const Wrapper = styled.div`
   margin: 1rem 6rem;
   display: flex;
   gap: 2rem;
-  min-width: 844px;
 
   .filterMenu {
     background-color: #dedede;
@@ -21,12 +20,11 @@ const Wrapper = styled.div`
     flex: 4;
   }
 
-  @media (max-width: 996px) {
+  @media (max-width: 1080px) {
     margin: 1rem;
   }
 
   @media (max-width: 768px) {
-    /**TODO: For mobile screens */
   }
 `;
 

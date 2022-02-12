@@ -30,11 +30,19 @@ export default Collections;
 
 const Wrapper = styled.div`
   margin-top: 6rem;
+  margin-bottom: 6rem;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
 
-  margin-bottom: 6rem;
+  @media (max-width: 1080px) {
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+    flex-direction: column;
+  }
 `;

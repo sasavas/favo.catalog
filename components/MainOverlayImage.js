@@ -12,7 +12,7 @@ const MainOverlayImage = () => {
         src="/images/boy-colorful-photoshoot.jpg"
         alt="Boy colorful photo"
         width="100%"
-        height={isSmallScreen ? "26rem" : "calc(100vh - 65px - 3.2rem)"}
+        height={isSmallScreen ? "24rem" : "calc(100vh - 65px - 3.2rem)"}
         objectFit="cover"
         objectPosition="right top"
       ></Image>

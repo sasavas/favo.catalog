@@ -15,7 +15,7 @@ const CardOverlayImage = ({
       <Image
         src={imageSrc}
         alt={imageAlt}
-        width="100%"
+        maxWidth="100%"
         objectFit="cover"
         objectPosition="right top"
       ></Image>
@@ -34,7 +34,7 @@ export default CardOverlayImage;
 
 const Wrapper = styled.div`
   position: relative;
-  max-width: 32rem;
+  min-width: 16rem;
 
   .overlay {
     position: absolute;
@@ -64,5 +64,19 @@ const Wrapper = styled.div`
         margin-bottom: 2rem;
       }
     }
+  }
+
+  @media (max-width: 1080px) {
+    .overlay .overlayContent {
+      bottom: 2rem;
+
+      .title {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* height: 12rem; */
   }
 `;
