@@ -5,8 +5,8 @@ function Image({
   src,
   alt,
   width,
-  maxWidth,
   height,
+  maxWidth,
   objectFit,
   objectPosition,
 }) {
@@ -16,8 +16,8 @@ function Image({
       alt={alt}
       style={{
         width: width || "auto",
-        maxWidth: maxWidth || "auto",
         height: height || "auto",
+        maxWidth: maxWidth || "auto",
         objectFit: objectFit,
         objectPosition: objectPosition,
       }}
