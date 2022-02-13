@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Banner from "../components/Banner";
+import Layout from "../components/Layout";
 import Collections from "../components/Collections";
 import MainOverlayImage from "../components/MainOverlayImage";
 import Info from "../components/Info";
-import Footer from "../components/Footer";
 import AgeCollections from "../components/AgeCollections";
 
 export default function Home() {
@@ -12,12 +11,12 @@ export default function Home() {
       <Head>
         <title>Home Page</title>
       </Head>
-      <Banner />
-      <MainOverlayImage />
-      <Collections />
-      <Info />
-      <AgeCollections />
-      <Footer />
+      <Layout>
+        <MainOverlayImage />
+        <Collections />
+        <Info />
+        <AgeCollections />
+      </Layout>
     </div>
   );
 }

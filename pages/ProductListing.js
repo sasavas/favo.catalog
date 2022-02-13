@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import getImageUrl from "../lib/getImageUrl";
-import Layout from "../components/Layout";
+import Layout from "../components/ProductListsLayout";
 import Link from "next/link";
 
 function ProductListing({ products }) {

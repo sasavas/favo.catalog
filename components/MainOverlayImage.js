@@ -46,6 +46,10 @@ export default MainOverlayImage;
 const Wrapper = styled.div`
   position: relative;
 
+  span {
+    color: white;
+  }
+
   .overlay {
     position: absolute;
     top: 0;

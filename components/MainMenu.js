@@ -12,10 +12,10 @@ function MainMenu() {
         <Link href="/ProductListing">
           <a>{mainNavLinks.catalog}</a>
         </Link>
-        <Link href="#">
-          <a>{mainNavLinks.aboutus}</a>
+        <Link href="/AboutUs">
+          <a>{mainNavLinks.aboutUs}</a>
         </Link>
-        <Link href="#">
+        <Link href="/Contact">
           <a>{mainNavLinks.contact}</a>
         </Link>
       </NavMenu>

@@ -28,8 +28,8 @@ function Banner() {
 
 const Wrapper = styled.div`
   padding: 0.4rem 0;
-  background-color: #fff;
-  box-shadow: 0px 2px 10px 2px #ddd;
+  /* background-color: #fff; */
+  /* box-shadow: 0px 2px 10px 2px #ddd; */
 `;
 
 const FlexContainer = styled.div`

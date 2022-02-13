@@ -12,6 +12,6 @@ export default function Footer() {
 }
 
 const Wrapper = styled.div`
-  background-color: lightgray;
-  color: white;
+  background-color: #f5f5f5;
+  padding: 2rem 0;
 `;
