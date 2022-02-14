@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Container from "../components/Container";
 import CardOverlayImage from "./CardOverlayImage";
-import { buttonTexts } from "../constants/strings";
+import { buttonTexts, seeCollections, titles } from "../constants/strings";
 
 function Collections() {
   return (
@@ -10,15 +10,15 @@ function Collections() {
         <CardOverlayImage
           imageSrc="/images/summercollection.jpg"
           imageAlt="summer collection"
-          title="2022 Summer"
-          detail="Check out our 2022 Summer Collection"
+          title={titles.summer2022}
+          detail={seeCollections.see2022SummerCollection}
           buttonText={buttonTexts.seeProducts}
         ></CardOverlayImage>
         <CardOverlayImage
           imageSrc="/images/springcollection.jpg"
           imageAlt="summer collection"
-          title="2022 Spring"
-          detail="Check out our 2022 Summer Collection"
+          title={titles.spring2022}
+          detail={seeCollections.see2022SpringCollection}
           buttonText={buttonTexts.seeProducts}
         ></CardOverlayImage>
       </Wrapper>

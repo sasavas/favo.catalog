@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "./Image";
 import Link from "next/link";
 import useMediaQuery from "../lib/hooks/useMediaQuery";
+import { buttonTexts, seeCollections } from "../constants/strings";
 
 const MainOverlayImage = () => {
   const isSmallScreen = useMediaQuery(768);
@@ -18,10 +19,10 @@ const MainOverlayImage = () => {
       ></Image>
       <div className="overlay">
         <div className="overlayContent">
-          <h2>2022 Yaz Kreasyonumuza Bir Göz Atın</h2>
+          <h2>{seeCollections.see2022SummerCollection}</h2>
           <div className="buttonContainer">
             <Link href="#">
-              <a className="catalogBtn">Ürünleri Gör</a>
+              <a className="catalogBtn">{buttonTexts.seeProducts}</a>
             </Link>
             <Link href="#">
               <a className="whatsappBtn">

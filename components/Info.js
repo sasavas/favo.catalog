@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Container from "./Container";
 import InfoItem from "./InfoItem";
+import { InfoTileTexts } from "../constants/strings";
 
 function Info() {
   return (
@@ -10,19 +11,19 @@ function Info() {
           imgSrc="/images/globe.png"
           imgAlt="globe"
           title="A global brand"
-          detail="You can find our products all across the world"
+          detail={InfoTileTexts.youCanFindOurProducts}
         ></InfoItem>
         <InfoItem
           imgSrc="/images/silhouette.png"
           imgAlt="silhouette"
           title="High quality"
-          detail="We use the best quality fabrics and materials in our products."
+          detail={InfoTileTexts.quality}
         ></InfoItem>
         <InfoItem
           imgSrc="/images/tag.png"
           imgAlt="tag"
           title="Best offers"
-          detail="We offer you the best quality products at the best prices."
+          detail={InfoTileTexts.reasonablePrices}
         ></InfoItem>
       </Wrapper>
     </Container>

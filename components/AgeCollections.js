@@ -1,24 +1,25 @@
 import styled from "styled-components";
 import Container from "./Container";
 import AgeCollectionItem from "./AgeCollectionItem";
+import { titles } from "../constants/strings";
 
 function AgeCollections() {
   return (
     <Wrapper>
-      <h2>Yaş Gruplarına Göre Ürünler</h2>
+      <h2>{titles.productsByAgeGroup}</h2>
       <Container>
         <AgeCollectionList>
           <AgeCollectionItem
             imgSrc="/images/babyboy.jpg"
-            title="Aylık"
+            title={titles.months}
           ></AgeCollectionItem>
           <AgeCollectionItem
             imgSrc="/images/2-5boy.jpg"
-            title="2-3-4-5 Yaş"
+            title={titles._2_5_age}
           ></AgeCollectionItem>
           <AgeCollectionItem
             imgSrc="/images/6-9boy.jpg"
-            title="6-7-8-9 Yaş"
+            title={titles._6_9_age}
           ></AgeCollectionItem>
         </AgeCollectionList>
       </Container>

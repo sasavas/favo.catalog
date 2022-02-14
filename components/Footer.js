@@ -2,6 +2,7 @@ import Container from "./Container";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "../components/Image";
+import { address } from "../constants/strings";
 
 export default function Footer() {
   return (
@@ -56,15 +57,15 @@ export default function Footer() {
                 src="/icons/address.png"
                 alt="address"
               ></Image>
-              <span>Yunusemre Mh. 2.Yenibağ Sk. 23/1 Yıldırım/Bursa </span>
+              <span>{address.address}</span>
             </div>
             <div className="addressItem">
               <Image width="2rem" src="/icons/phone.png" alt="Phone"></Image>
-              <span>+90 543 523 6345</span>
+              <span>{address.phone}</span>
             </div>
             <div className="addressItem">
               <Image width="2rem" src="/icons/email.png" alt="Email"></Image>
-              <span>contact@favokids.com</span>
+              <span>{address.email}</span>
             </div>
           </div>
         </div>
