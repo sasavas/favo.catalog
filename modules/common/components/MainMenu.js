@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { mainNavLinks } from "../constants/strings";
+import { mainNavLinks } from "../../../constants/strings";
 import { useRouter } from "next/router";
 
 function MainMenu() {

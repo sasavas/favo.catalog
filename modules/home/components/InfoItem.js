@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Image from "../components/Image";
+import Image from "../../common/components/Image";
 
 export default function InfoItem({ imgSrc, imgAlt, title, detail }) {
   return (

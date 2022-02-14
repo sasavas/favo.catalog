@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "./Container";
-import Banner from "./Banner";
+import Container from "../../common/components/Container";
+import Banner from "../../common/components/Banner";
 import styled from "styled-components";
-import Footer from "./Footer";
+import Footer from "../../common/components/Footer";
 
 function ProductListsLayout({ children }) {
   return (

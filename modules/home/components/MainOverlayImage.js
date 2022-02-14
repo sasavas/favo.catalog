@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Image from "./Image";
+import Image from "../../common/components/Image";
 import Link from "next/link";
-import useMediaQuery from "../lib/hooks/useMediaQuery";
-import { buttonTexts, seeCollections } from "../constants/strings";
+import useMediaQuery from "../../../lib/hooks/useMediaQuery";
+import { buttonTexts, seeCollections } from "../../../constants/strings";
 import { useRouter } from "next/router";
 
 const MainOverlayImage = () => {

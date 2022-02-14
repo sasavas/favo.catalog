@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Container from "./Container";
+import Container from "../../common/components/Container";
 import InfoItem from "./InfoItem";
-import { InfoTileTexts } from "../constants/strings";
+import { InfoTileTexts } from "../../../constants/strings";
 import { useRouter } from "next/router";
 
 function Info() {

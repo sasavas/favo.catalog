@@ -1,7 +1,11 @@
 import styled from "styled-components";
-import Container from "../components/Container";
-import CardOverlayImage from "./CardOverlayImage";
-import { buttonTexts, seeCollections, titles } from "../constants/strings";
+import Container from "../../common/components/Container";
+import CardOverlayImage from "../../common/components/CardOverlayImage";
+import {
+  buttonTexts,
+  seeCollections,
+  titles,
+} from "../../../constants/strings";
 import { useRouter } from "next/router";
 
 function Collections() {

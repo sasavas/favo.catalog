@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Image from "../components/Image";
+import Image from "../../common/components/Image";
 import Link from "next/link";
 
 export default function AgeCollectionItem({ imgSrc, imgAlt, title }) {

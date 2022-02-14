@@ -1,9 +1,9 @@
-import Container from "./Container";
 import styled from "styled-components";
 import Link from "next/link";
-import Image from "../components/Image";
-import { externalLinks } from "../constants/network";
-import { address, titles, callToActions } from "../constants/strings";
+import Container from "./Container";
+import Image from "./Image";
+import { externalLinks } from "../../../constants/network";
+import { address, titles, callToActions } from "../../../constants/strings";
 import { useRouter } from "next/router";
 
 export default function Footer() {

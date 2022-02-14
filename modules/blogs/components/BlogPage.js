@@ -1,6 +1,6 @@
-import Layout from "../components/Layout";
+import Layout from "../../common/components/Layout";
 import styled from "styled-components";
-import Container from "../components/Container";
+import Container from "../../common/components/Container";
 
 function AboutUs({ title, children }) {
   return (

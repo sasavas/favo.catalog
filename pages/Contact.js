@@ -1,4 +1,4 @@
-import BlogPage from "../components/BlogPage";
+import BlogPage from "../modules/blogs/components/BlogPage";
 import { mainNavLinks } from "../constants/strings";
 
 function Contact() {

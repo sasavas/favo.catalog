@@ -1,5 +1,5 @@
 import { mainNavLinks, aboutUsPageParagraphs } from "../constants/strings";
-import BlogPage from "../components/BlogPage";
+import BlogPage from "../modules/blogs/components/BlogPage";
 import { useRouter } from "next/router";
 
 function AboutUs() {
