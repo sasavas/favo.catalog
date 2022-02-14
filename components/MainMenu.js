@@ -1,22 +1,26 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { mainNavLinks } from "../constants/strings";
+import { useRouter } from "next/router";
 
 function MainMenu() {
+  const { locale } = useRouter();
+  const { homepage, catalog, aboutUs, contact } = mainNavLinks[locale];
+
   return (
     <div>
       <NavMenu>
         <Link href="/">
-          <a>{mainNavLinks.homepage}</a>
+          <a>{homepage}</a>
         </Link>
         <Link href="/ProductListing">
-          <a>{mainNavLinks.catalog}</a>
+          <a>{catalog}</a>
         </Link>
         <Link href="/AboutUs">
-          <a>{mainNavLinks.aboutUs}</a>
+          <a>{aboutUs}</a>
         </Link>
         <Link href="/Contact">
-          <a>{mainNavLinks.contact}</a>
+          <a>{contact}</a>
         </Link>
       </NavMenu>
     </div>

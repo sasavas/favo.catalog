@@ -1,10 +1,10 @@
 import React from "react";
-import Container from "./Container";
 import Banner from "./Banner";
-import styled from "styled-components";
 import Footer from "./Footer";
+import { useRouter } from "next/router";
 
 function Layout({ children }) {
+  const { locale } = useRouter();
   return (
     <>
       <Banner />

@@ -2,8 +2,13 @@ import styled from "styled-components";
 import Container from "./Container";
 import InfoItem from "./InfoItem";
 import { InfoTileTexts } from "../constants/strings";
+import { useRouter } from "next/router";
 
 function Info() {
+  const { locale } = useRouter();
+  const { youCanFindOurProducts, quality, reasonablePrices } =
+    InfoTileTexts[locale];
+
   return (
     <Container>
       <Wrapper>
@@ -11,19 +16,19 @@ function Info() {
           imgSrc="/images/globe.png"
           imgAlt="globe"
           title="A global brand"
-          detail={InfoTileTexts.youCanFindOurProducts}
+          detail={youCanFindOurProducts}
         ></InfoItem>
         <InfoItem
           imgSrc="/images/silhouette.png"
           imgAlt="silhouette"
           title="High quality"
-          detail={InfoTileTexts.quality}
+          detail={quality}
         ></InfoItem>
         <InfoItem
           imgSrc="/images/tag.png"
           imgAlt="tag"
           title="Best offers"
-          detail={InfoTileTexts.reasonablePrices}
+          detail={reasonablePrices}
         ></InfoItem>
       </Wrapper>
     </Container>

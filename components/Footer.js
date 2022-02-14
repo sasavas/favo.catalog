@@ -2,9 +2,13 @@ import Container from "./Container";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "../components/Image";
-import { address } from "../constants/strings";
+import { address, titles } from "../constants/strings";
+import { useRouter } from "next/router";
 
 export default function Footer() {
+  const { locale } = useRouter();
+  const { months, _2_5_age, _6_9_age, allCollection } = titles;
+
   return (
     <Wrapper>
       <Container>
@@ -12,16 +16,16 @@ export default function Footer() {
           <div className="categories">
             <h4>Kategoriler</h4>
             <Link href="#">
-              <a>Tum Kreasyon</a>
+              <a>{allCollection}</a>
             </Link>
             <Link href="#">
-              <a>Aylik Grubu</a>
+              <a>{months}</a>
             </Link>
             <Link href="#">
-              <a>2-5 Yas Grubu</a>
+              <a>{_2_5_age}</a>
             </Link>
             <Link href="#">
-              <a>6-9 Yas Grubu</a>
+              <a>{_6_9_age}</a>
             </Link>
           </div>
           <div className="followUs">
