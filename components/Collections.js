@@ -2,24 +2,31 @@ import styled from "styled-components";
 import Container from "../components/Container";
 import CardOverlayImage from "./CardOverlayImage";
 import { buttonTexts, seeCollections, titles } from "../constants/strings";
+import { useRouter } from "next/router";
 
 function Collections() {
+  const { locale } = useRouter();
+  const { seeProducts } = buttonTexts[locale];
+  const { summer2022, spring2022 } = titles[locale];
+  const { see2022SummerCollection, see2022SpringCollection } =
+    seeCollections[locale];
+
   return (
     <Container>
       <Wrapper>
         <CardOverlayImage
           imageSrc="/images/summercollection.jpg"
           imageAlt="summer collection"
-          title={titles.summer2022}
-          detail={seeCollections.see2022SummerCollection}
-          buttonText={buttonTexts.seeProducts}
+          title={summer2022}
+          detail={see2022SummerCollection}
+          buttonText={seeProducts}
         ></CardOverlayImage>
         <CardOverlayImage
           imageSrc="/images/springcollection.jpg"
           imageAlt="summer collection"
-          title={titles.spring2022}
-          detail={seeCollections.see2022SpringCollection}
-          buttonText={buttonTexts.seeProducts}
+          title={spring2022}
+          detail={see2022SpringCollection}
+          buttonText={seeProducts}
         ></CardOverlayImage>
       </Wrapper>
     </Container>

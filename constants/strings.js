@@ -51,6 +51,8 @@ export const titles = {
     _6_9_age: "6-7-8-9 Yaş",
     productsByAgeGroup: "Yaş Gruplarına Göre Ürünler",
     allCollection: "Tüm Kreasyon",
+    categories: "Kategoriler",
+    address: "Adres",
   },
   en: {
     summer2022: "2022 Summer",
@@ -60,34 +62,38 @@ export const titles = {
     _6_9_age: "6-7-8-9 Age",
     productsByAgeGroup: "Products by Age Groups",
     allCollection: "All Collection Items",
+    categories: "Categories",
+    address: "Address",
   },
 };
 
 export const InfoTileTexts = {
   tr: {
-    youCanFindOurProducts: "You can find our products all across the world",
-    quality: "We use the best quality fabrics and materials in our products.",
-    reasonablePrices:
-      "We offer you the best quality products at the best prices.",
-  },
-  en: {
     youCanFindOurProducts:
       "Ürünlerimize istediğiniz her yerden ulaşabilirsiniz.",
     quality: "Ürünlerimizde en kaliteli kumaş ve materyalleri kullanıyoruz.",
     reasonablePrices:
       "En kaliteli ürünleri en iyi fiyatlardan sizlere sunuyoruz.",
   },
+  en: {
+    youCanFindOurProducts: "You can find our products all across the world",
+    quality: "We use the best quality fabrics and materials in our products.",
+    reasonablePrices:
+      "We offer you the best quality products at the best prices.",
+  },
+};
+
+export const callToActions = {
+  tr: {
+    followUs: "Bizi Takip Edin",
+  },
+  en: {
+    followUs: "Follow us",
+  },
 };
 
 export const address = {
-  tr: {
-    address: "Yunusemre Mh. 2.Yenibağ Sk. 23/1 Yıldırım/Bursa",
-    phone: "+90 543 523 6345",
-    email: "contact@favokids.com",
-  },
-  en: {
-    address: "Yunusemre Mh. 2.Yenibağ Sk. 23/1 Yıldırım/Bursa",
-    phone: "+90 543 523 6345",
-    email: "contact@favokids.com",
-  },
+  address: "Yunusemre Mh. 2.Yenibağ Sk. 23/1 Yıldırım/Bursa",
+  phone: "+90 543 523 6345",
+  email: "contact@favokids.com",
 };

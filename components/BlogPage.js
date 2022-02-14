@@ -1,7 +1,6 @@
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import Container from "../components/Container";
-import { aboutUsPageParagraphs } from "../constants/strings";
 
 function AboutUs({ title, children }) {
   return (

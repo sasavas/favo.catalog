@@ -2,19 +2,29 @@ import Container from "./Container";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "../components/Image";
-import { address, titles } from "../constants/strings";
+import { externalLinks } from "../constants/network";
+import { address, titles, callToActions } from "../constants/strings";
 import { useRouter } from "next/router";
 
 export default function Footer() {
   const { locale } = useRouter();
-  const { months, _2_5_age, _6_9_age, allCollection } = titles;
+  const {
+    months,
+    _2_5_age,
+    _6_9_age,
+    allCollection,
+    categories,
+    address: addressTitle,
+  } = titles[locale];
+  const { followUs } = callToActions[locale];
+  const { facebook, instagram, twitter, telegram, vkontakte } = externalLinks;
 
   return (
     <Wrapper>
       <Container>
         <div className="content">
           <div className="categories">
-            <h4>Kategoriler</h4>
+            <h4>{categories}</h4>
             <Link href="#">
               <a>{allCollection}</a>
             </Link>
@@ -29,32 +39,47 @@ export default function Footer() {
             </Link>
           </div>
           <div className="followUs">
-            <h4>Bizi Takip Edin</h4>
+            <h4>{followUs}</h4>
             <div className="socialIcons">
-              <Image
-                width="2rem"
-                src="/icons/facebook.png"
-                alt="Facebook"
-              ></Image>
-              <Image
-                width="2rem"
-                src="/icons/instagram.png"
-                alt="Instagram"
-              ></Image>
-              <Image
-                width="2rem"
-                src="/icons/twitter.png"
-                alt="Twitter"
-              ></Image>
-              <Image
-                width="2rem"
-                src="/icons/telegram.png"
-                alt="Telegram Channel"
-              ></Image>
+              <a href={facebook} target="_blank" rel="noreferrer">
+                <Image
+                  width="2rem"
+                  src="/icons/facebook.png"
+                  alt="Facebook"
+                ></Image>
+              </a>
+              <a href={instagram} target="_blank" rel="noreferrer">
+                <Image
+                  width="2rem"
+                  src="/icons/instagram.png"
+                  alt="Instagram"
+                ></Image>
+              </a>
+              <a href={twitter} target="_blank" rel="noreferrer">
+                <Image
+                  width="2rem"
+                  src="/icons/twitter.png"
+                  alt="Twitter"
+                ></Image>
+              </a>
+              <a href={telegram} target="_blank" rel="noreferrer">
+                <Image
+                  width="2rem"
+                  src="/icons/telegram.png"
+                  alt="Telegram Channel"
+                ></Image>
+              </a>
+              <a href={vkontakte} target="_blank" rel="noreferrer">
+                <Image
+                  width="2rem"
+                  src="/icons/vkontakte.png"
+                  alt="Vkontakte"
+                ></Image>
+              </a>
             </div>
           </div>
           <div className="address">
-            <h4>Adres</h4>
+            <h4>{addressTitle}</h4>
             <div className="addressItem">
               <Image
                 width="2rem"

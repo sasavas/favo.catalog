@@ -20,6 +20,11 @@ export default function AgeCollectionItem({ imgSrc, imgAlt, title }) {
 const Wrapper = styled.div`
   position: relative;
 
+  &:hover {
+    opacity: 0.8;
+    background-color: black;
+  }
+
   .overlay {
     position: absolute;
     top: 0;

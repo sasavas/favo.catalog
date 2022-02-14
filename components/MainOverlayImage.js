@@ -3,9 +3,13 @@ import Image from "./Image";
 import Link from "next/link";
 import useMediaQuery from "../lib/hooks/useMediaQuery";
 import { buttonTexts, seeCollections } from "../constants/strings";
+import { useRouter } from "next/router";
 
 const MainOverlayImage = () => {
   const isSmallScreen = useMediaQuery(768);
+  const { locale } = useRouter();
+  const { seeProducts } = buttonTexts[locale];
+  const { see2022SummerCollection } = seeCollections[locale];
 
   return (
     <Wrapper>
@@ -19,10 +23,10 @@ const MainOverlayImage = () => {
       ></Image>
       <div className="overlay">
         <div className="overlayContent">
-          <h2>{seeCollections.see2022SummerCollection}</h2>
+          <h2>{see2022SummerCollection}</h2>
           <div className="buttonContainer">
             <Link href="#">
-              <a className="catalogBtn">{buttonTexts.seeProducts}</a>
+              <a className="catalogBtn">{seeProducts}</a>
             </Link>
             <Link href="#">
               <a className="whatsappBtn">
@@ -67,7 +71,7 @@ const Wrapper = styled.div`
       h2 {
         font-size: 4rem;
         color: white;
-        width: 40%;
+        width: 50%;
         margin-bottom: 2rem;
       }
 
