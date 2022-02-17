@@ -2,7 +2,7 @@
  * !IMPORTANT Keep this file and implement it for product pages
  */
 
-import Layout from "../../components/layout";
+import Layout from "../../modules/common/components/Layout";
 
 export default function Post({ productData }) {
   return (
