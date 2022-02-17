@@ -9,9 +9,11 @@ function AboutUs() {
 
   return (
     <BlogPage title={aboutUs}>
-      {paragraphs.map((p) => {
-        return <p key={p.length}>{p}</p>;
-      })}
+      {paragraphs
+        ? paragraphs.map((p) => {
+            return <p key={p.length}>{p}</p>;
+          })
+        : "About Us.. no content"}
     </BlogPage>
   );
 }
