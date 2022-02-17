@@ -5,15 +5,15 @@ import { useRouter } from "next/router";
 function AboutUs() {
   const { locale } = useRouter();
   const { aboutUs } = mainNavLinks[locale];
-  const { paragraphs } = aboutUsPageParagraphs[locale];
+  // const { paragraphs } = aboutUsPageParagraphs[locale];
 
   return (
     <BlogPage title={aboutUs}>
-      {paragraphs
-        ? paragraphs.map((p) => {
+      {/* {paragraphs.map((p) => {
             return <p key={p.length}>{p}</p>;
-          })
-        : "About Us.. no content"}
+          })} */}
+
+      <p>About Us.. Oops there is no content here</p>
     </BlogPage>
   );
 }
