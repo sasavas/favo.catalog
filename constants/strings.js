@@ -28,13 +28,13 @@ export const aboutUsPageParagraphs = {
   tr: {
     paragraphs: [
       "İş yerimiz Türkiye ve Bursa’nın bebek ve çocuk kıyafet üretiminin kalbi olan Vişne Caddesi bölgesinde yer almaktadır. Kurulduğumuz tarihten bu yana siz değerli müşterilerimize en kaliteli ve şık ürünleri en iyi fiyatlardan sunmak için elimizden gelen çabayı gösteriyoruz. Çocuklarınızın ve sevdiklerinizin sağlığı ve konforu için ürünlerimizde en yüksek kalite kumaş ve kanserojen olmayan maddeler kullanıyoruz.",
-      "Her sezon alanında uzman stilistlerimiz tarafından sıfırdan geliştirilen kreasyonlarımızda sadece en yaratıcı ve benzersiz tasarımlara yer veriyoruz. Geniş ürün kataloğumuz ile envanterinizde ihtiyaç duyacağınız pek çok ihtiyacınıza hitap ediyoruz.",
+      "Her sezon alanında uzman stilistlerimiz tarafından sıfırdan geliştirilen kreasyonlarımızda sadece en yaratıcı ve benzersiz tasarımlara yer veriyoruz. Geniş ürün kataloğumuz ile envanterinizde ihtiyaç duyacağınız pek çok ihtiyacınıza hitap ediyoruz. ",
     ],
   },
   en: {
     paragraphs: [
-      "İş yerimiz Türkiye ve Bursa’nın bebek ve çocuk kıyafet üretiminin kalbi olan Vişne Caddesi bölgesinde yer almaktadır. Kurulduğumuz tarihten bu yana siz değerli müşterilerimize en kaliteli ve şık ürünleri en iyi fiyatlardan sunmak için elimizden gelen çabayı gösteriyoruz. Çocuklarınızın ve sevdiklerinizin sağlığı ve konforu için ürünlerimizde en yüksek kalite kumaş ve kanserojen olmayan maddeler kullanıyoruz.",
-      "Her sezon alanında uzman stilistlerimiz tarafından sıfırdan geliştirilen kreasyonlarımızda sadece en yaratıcı ve benzersiz tasarımlara yer veriyoruz. Geniş ürün kataloğumuz ile envanterinizde ihtiyaç duyacağınız pek çok ihtiyacınıza hitap ediyoruz.",
+      "Our company is located on the Visne Street, the heart of kids clothing manufacturing of Turkey and Bursa. Since our foundation we are trying to do our best to provide you with the best quality and stylish products for reasonable prices. We use fabrics of highest quality and noncarcinogenic materials in our products for the health and comfort of your little loved ones.",
+      "We include only the most creative and unique designs in our collections for each season that are developed from scratch by our talented fashion designers. With our wide range of product catalog, we are trying to address whatever you may need in your inventory.",
     ],
   },
 };
