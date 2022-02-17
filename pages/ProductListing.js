@@ -42,7 +42,7 @@ function ProductListing({ products }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // fetch products from api
   // get images from firebase
 
@@ -77,7 +77,6 @@ const Wrapper = styled.div`
   text-align: center;
 
   h1 {
-    font-weight: normal;
     margin-bottom: 2rem;
   }
 `;
@@ -90,15 +89,18 @@ const Gallery = styled.div`
   gap: 1rem;
 
   margin: 1rem;
+  margin-top: 4rem;
 `;
 
 const Product = styled.div`
   transition: 0.3s;
-  max-width: 20rem;
-  height: 30rem;
+  max-width: 16rem;
+  height: 28rem;
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
+  align-items: start;
+  margin-bottom: 6rem;
 
   .btn {
     display: block;
@@ -108,16 +110,16 @@ const Product = styled.div`
     transition: all 0.3s ease-out;
     overflow: hidden;
     border-radius: inherit;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-
-    &:hover {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
 
     img {
-      width: 18rem;
-      min-height: 27rem;
+      width: 16rem;
+      min-height: 24rem;
       object-fit: contain;
+      object-position: top center;
+
+      &:hover {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      }
     }
   }
 
