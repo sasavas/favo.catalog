@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 
 function AboutUs() {
   const { locale } = useRouter();
-  const ps = aboutUsPageParagraphs[locale];
   const { aboutUs } = mainNavLinks[locale];
+  const ps = aboutUsPageParagraphs[locale];
 
   return (
     <BlogPage title={aboutUs}>
