@@ -9,7 +9,7 @@ function ProductListsLayout({ children }) {
     <Wrapper>
       <Banner></Banner>
       <Container>
-        <div className="filterMenu">Filter Menu</div>
+        {/* <div className="filterMenu">Filter Menu</div> */}
         <div className="mainContent">{children}</div>
       </Container>
       <Footer />

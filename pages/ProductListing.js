@@ -100,7 +100,7 @@ const Product = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 
   .btn {
     display: block;
@@ -115,7 +115,7 @@ const Product = styled.div`
       width: 16rem;
       min-height: 24rem;
       object-fit: contain;
-      object-position: top center;
+      object-position: center bottom;
 
       &:hover {
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
