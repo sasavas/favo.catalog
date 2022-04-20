@@ -4,6 +4,7 @@ import styled from "styled-components";
 import getImageUrl from "../lib/getImageUrl";
 import Layout from "..//modules/products/components/ProductListsLayout";
 import Link from "next/link";
+import Image from "next/image";
 
 function ProductListing({ products }) {
   return (
@@ -18,7 +19,14 @@ function ProductListing({ products }) {
                   <Link href={`/ProductDetails/${p._id}`}>
                     <a>
                       <div className="productImage">
-                        <img src={p.imageUrl} alt={p.name} />
+                        <Image
+                          width="320"
+                          height="480"
+                          src={p.imageUrl}
+                          alt={p.name}
+                          objectFit="contain"
+                          layout="intrinsic"
+                        />
                       </div>
                       <div className="productInfo">
                         <div className="productDetails">
@@ -51,6 +59,7 @@ export async function getServerSideProps() {
   const products = result.products;
 
   let pWImages = await makeListProductsWImages(products);
+  pWImages.sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
 
   return {
     props: {
@@ -63,14 +72,14 @@ const makeListProductsWImages = async (productArr) => {
   // get each image's url and add the new product to the new list
   // it only gets the main image
   // other (color) images will be fetched on the single product page
-  let pWImages = [];
+  let result = [];
   for (let i = 0; i < productArr.length; i++) {
     const url = await getImageUrl(productArr[i].imagePath);
-    const newObj = { ...productArr[i], imageUrl: url };
-    pWImages.push(newObj);
+    const pWUrl = { ...productArr[i], imageUrl: url };
+    result.push(pWUrl);
   }
 
-  return pWImages;
+  return result;
 };
 
 const Wrapper = styled.div`
@@ -83,9 +92,6 @@ const Wrapper = styled.div`
 
 const Gallery = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: start;
   gap: 1rem;
 
   margin: 1rem;
@@ -94,37 +100,17 @@ const Gallery = styled.div`
 
 const Product = styled.div`
   transition: 0.3s;
-  max-width: 16rem;
-  height: 28rem;
   font-size: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
   margin-bottom: 2rem;
-
-  .btn {
-    display: block;
-  }
 
   .productImage {
     transition: all 0.3s ease-out;
     overflow: hidden;
     border-radius: inherit;
-
-    img {
-      width: 16rem;
-      min-height: 24rem;
-      object-fit: contain;
-      object-position: center bottom;
-
-      &:hover {
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-      }
-    }
   }
 
   .productInfo {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-direction: row;
     justify-content: center;
