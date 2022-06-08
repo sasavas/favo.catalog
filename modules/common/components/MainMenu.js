@@ -13,7 +13,7 @@ function MainMenu() {
         <Link href="/">
           <a>{homepage}</a>
         </Link>
-        <Link href="/ProductListing">
+        <Link href="/products">
           <a>{catalog}</a>
         </Link>
         <Link href="/AboutUs">

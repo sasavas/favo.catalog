@@ -1,14 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import styled from "styled-components";
-import getImageUrl from "../lib/getImageUrl";
-import Layout from "..//modules/products/components/ProductListsLayout";
+import getImageUrl from "../../lib/getImageUrl";
+import ProductListLayout from "../../modules/products/components/ProductListsLayout";
 import Link from "next/link";
 import Image from "next/image";
 
+/**
+ *
+ * @param {products} products this value is returned from
+ * the getServerSideProps function below and passed here
+ */
 function ProductListing({ products }) {
   return (
-    <Layout>
+    <ProductListLayout>
       <Wrapper>
         <h1>2022 Yaz Kreasyonu</h1>
         <Gallery>
@@ -20,19 +25,19 @@ function ProductListing({ products }) {
                     <a>
                       <div className="productImage">
                         <Image
-                          width="320"
-                          height="480"
                           src={p.imageUrl}
                           alt={p.name}
                           objectFit="contain"
-                          layout="intrinsic"
+                          layout="responsive"
+                          width={200}
+                          height={300}
                         />
                       </div>
                       <div className="productInfo">
                         <div className="productDetails">
                           <div>
                             <span id="code">{p.code} </span>
-                            <span id="name">{p.name}</span>
+                            <span id="name">{"TEST TEST "}</span>
                           </div>
                         </div>
                       </div>
@@ -46,7 +51,7 @@ function ProductListing({ products }) {
           )}
         </Gallery>
       </Wrapper>
-    </Layout>
+    </ProductListLayout>
   );
 }
 
@@ -90,34 +95,20 @@ const Wrapper = styled.div`
   }
 `;
 
-const Gallery = styled.div`
-  display: flex;
-  gap: 1rem;
-
-  margin: 1rem;
-  margin-top: 4rem;
-`;
+const Gallery = styled.div``;
 
 const Product = styled.div`
-  transition: 0.3s;
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
+  display: inline-block;
+  width: 22%;
+  margin: 1rem 0.5rem 1rem 0.5rem;
 
   .productImage {
     transition: all 0.3s ease-out;
-    overflow: hidden;
-    border-radius: inherit;
   }
 
   .productInfo {
-    /* width: 100%; */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: end;
-
     .productDetails {
-      margin-top: 1rem;
+      margin: 1rem 0;
 
       #code {
         font-weight: bold;
@@ -127,6 +118,14 @@ const Product = styled.div`
         max-lines: 2;
       }
     }
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 30%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 45%;
   }
 `;
 
