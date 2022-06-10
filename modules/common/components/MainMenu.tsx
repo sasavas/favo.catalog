@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { mainNavLinks } from "../../../constants/strings";
 import { useRouter } from "next/router";
 
-function MainMenu() {
+function NavLinks({ className }) {
   const { locale } = useRouter();
   const { homepage, catalog, aboutUs, contact } = mainNavLinks[locale];
 
   return (
-    <div>
+    <div className={className}>
       <NavMenu>
         <Link href="/">
           <a>{homepage}</a>
@@ -36,4 +36,4 @@ const NavMenu = styled.nav`
   }
 `;
 
-export default MainMenu;
+export default NavLinks;

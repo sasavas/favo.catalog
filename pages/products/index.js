@@ -37,7 +37,7 @@ function ProductListing({ products }) {
                         <div className="productDetails">
                           <div>
                             <span id="code">{p.code} </span>
-                            <span id="name">{"TEST TEST "}</span>
+                            <span id="name">{p.name}</span>
                           </div>
                         </div>
                       </div>
@@ -95,12 +95,34 @@ const Wrapper = styled.div`
   }
 `;
 
-const Gallery = styled.div``;
+const Gallery = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
 const Product = styled.div`
-  display: inline-block;
-  width: 22%;
   margin: 1rem 0.5rem 1rem 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  @media screen and (max-width: 768px) {
+    :nth-of-type(odd) {
+      margin-right: 0.5rem;
+      margin-left: 0;
+    }
+
+    :nth-of-type(even) {
+      margin-right: 0;
+      margin-left: 0.5rem;
+    }
+  }
 
   .productImage {
     transition: all 0.3s ease-out;
@@ -118,14 +140,6 @@ const Product = styled.div`
         max-lines: 2;
       }
     }
-  }
-
-  @media screen and (max-width: 900px) {
-    width: 30%;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 45%;
   }
 `;
 

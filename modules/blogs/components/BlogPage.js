@@ -19,6 +19,7 @@ export default AboutUs;
 
 const Wrapper = styled.div`
   width: 60%;
+  margin: 0 auto;
   min-height: calc(100vh - 12rem);
 
   h1 {
@@ -33,7 +34,11 @@ const Wrapper = styled.div`
     line-height: 1.6rem;
   }
 
+  @media (max-width: 900px) {
+    width: 70%;
+  }
+
   @media (max-width: 768px) {
-    width: 80%;
+    width: 90%;
   }
 `;

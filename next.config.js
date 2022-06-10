@@ -1,4 +1,5 @@
 module.exports = {
+  pageExtensions: ["ts", "tsx", "js", "jsx"],
   reactStrictMode: true,
   images: {
     domains: ["firebasestorage.googleapis.com"],
