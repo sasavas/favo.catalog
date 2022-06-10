@@ -98,6 +98,7 @@ const Wrapper = styled.div`
 const Gallery = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 6rem;
 
   @media screen and (max-width: 900px) {
     grid-template-columns: 1fr 1fr 1fr;

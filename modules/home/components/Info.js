@@ -39,6 +39,7 @@ export default Info;
 
 const Wrapper = styled.div`
   width: 80%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   gap: 1rem;

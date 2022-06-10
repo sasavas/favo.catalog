@@ -14,8 +14,8 @@ export default function Home() {
       <Layout>
         <MainOverlayImage />
         <Collections />
-        <Info />
         <AgeCollections />
+        <Info />
       </Layout>
     </div>
   );

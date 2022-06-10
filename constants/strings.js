@@ -60,7 +60,7 @@ export const titles = {
     productsByAgeGroup: "Yaş Gruplarına Göre Ürünler",
     allCollection: "Tüm Kreasyon",
     categories: "Kategoriler",
-    address: "Adres",
+    address: "İletişim",
   },
   en: {
     summer2022: "2022 Summer",
@@ -71,7 +71,7 @@ export const titles = {
     productsByAgeGroup: "Products by Age Groups",
     allCollection: "All Collection Items",
     categories: "Categories",
-    address: "Address",
+    address: "Contact",
   },
 };
 

@@ -26,16 +26,16 @@ export default function Footer() {
           <div className="categories">
             <h4>{categories}</h4>
             <Link href="#">
-              <a>{allCollection}</a>
+              <a className="item">{allCollection}</a>
             </Link>
             <Link href="#">
-              <a>{months}</a>
+              <a className="item">{months}</a>
             </Link>
             <Link href="#">
-              <a>{_2_5_age}</a>
+              <a className="item">{_2_5_age}</a>
             </Link>
             <Link href="#">
-              <a>{_6_9_age}</a>
+              <a className="item">{_6_9_age}</a>
             </Link>
           </div>
           <div className="followUs">
@@ -80,7 +80,7 @@ export default function Footer() {
           </div>
           <div className="address">
             <h4>{addressTitle}</h4>
-            <div className="addressItem">
+            <div className="item addressItem">
               <Image
                 width="2rem"
                 src="/icons/address.png"
@@ -88,11 +88,11 @@ export default function Footer() {
               ></Image>
               <span>{address.address}</span>
             </div>
-            <div className="addressItem">
+            <div className="item addressItem">
               <Image width="2rem" src="/icons/phone.png" alt="Phone"></Image>
               <span>{address.phone}</span>
             </div>
-            <div className="addressItem">
+            <div className="item addressItem">
               <Image width="2rem" src="/icons/email.png" alt="Email"></Image>
               <span>{address.email}</span>
             </div>
@@ -108,7 +108,19 @@ const Wrapper = styled.div`
   padding: 2rem 0;
 
   a {
-    color: rebeccapurple;
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+
+  h4 {
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+  }
+
+  .item {
+    display: block;
+    margin-bottom: 2rem;
   }
 
   .content {
@@ -117,35 +129,14 @@ const Wrapper = styled.div`
     justify-content: space-between;
     gap: 2rem;
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: center;
-      gap: 4rem;
-
-      h4 {
-        text-align: center;
-        margin-bottom: 1rem !important;
-      }
-    }
-
     .categories {
       flex: 1;
-
-      & > * {
-        display: block;
-        margin-bottom: 0.4rem;
-      }
-
-      h4 {
-        font-size: 1.6rem;
-        margin-bottom: 2rem;
-      }
     }
 
     .followUs {
       flex: 1;
 
-      & > div {
+      div {
         display: flex;
         align-items: start;
         gap: 1rem;
@@ -155,32 +146,35 @@ const Wrapper = styled.div`
           cursor: pointer;
         }
       }
-
-      h4 {
-        font-size: 1.6rem;
-        margin-bottom: 2rem;
-      }
     }
 
     .address {
       flex: 1;
 
-      & > * {
-        margin-bottom: 0.4rem;
-      }
-
       .addressItem {
         display: flex;
-        align-items: start;
+        align-items: center;
+
         span {
           margin-left: 0.6rem;
         }
       }
+    }
+  }
 
-      h4 {
-        font-size: 1.6rem;
-        margin-bottom: 2rem;
-      }
+  @media (max-width: 768px) {
+    h4 {
+      text-align: center;
+    }
+
+    .content {
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .address {
+      width: 70%;
     }
   }
 `;
