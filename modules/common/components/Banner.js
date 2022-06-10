@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Container from "./Container";
 import Image from "next/image";
-import NavLinks from "./MainMenu.tsx";
+import NavLinks from "./NavLinks.tsx";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { useState, useEffect } from "react";
@@ -13,7 +13,7 @@ function Banner() {
     // const bigScreen = window.innerWidth > 768;
     // console.log("bigScreen", bigScreen);
 
-    setShowMenu(false);
+    setShowMenu(true);
   }, []);
 
   return (
@@ -87,21 +87,6 @@ const Wrapper = styled.div`
       .nav {
         .nav-icon {
           display: block;
-        }
-
-        .nav-links {
-          display: none;
-        }
-
-        .nav-links__full_screen {
-          display: block;
-          position: fixed;
-          width: 100vw;
-          height: 100vh;
-          top: 0;
-          left: 0;
-          background-color: aliceblue;
-          z-index: 999;
         }
       }
     }
