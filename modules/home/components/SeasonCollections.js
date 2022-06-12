@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Container from "../../common/components/Container";
-import CardOverlayImage from "../../common/components/CardOverlayImage";
+import SeasonCollectionItem from "../../common/components/SeasonCollectionItem";
 import {
   buttonTexts,
   seeCollections,
@@ -8,7 +8,7 @@ import {
 } from "../../../constants/strings";
 import { useRouter } from "next/router";
 
-function Collections() {
+function SeasonCollections() {
   const { locale } = useRouter();
   const { seeProducts } = buttonTexts[locale];
   const { summer2022, spring2022 } = titles[locale];
@@ -18,26 +18,28 @@ function Collections() {
   return (
     <Container>
       <Wrapper>
-        <CardOverlayImage
+        <SeasonCollectionItem
           imageSrc="/images/summercollection.jpg"
           imageAlt="summer collection"
           title={summer2022}
           detail={see2022SummerCollection}
           buttonText={seeProducts}
-        ></CardOverlayImage>
-        <CardOverlayImage
+          href="/products"
+        ></SeasonCollectionItem>
+        <SeasonCollectionItem
           imageSrc="/images/springcollection.jpg"
           imageAlt="summer collection"
           title={spring2022}
           detail={see2022SpringCollection}
           buttonText={seeProducts}
-        ></CardOverlayImage>
+          href="/products"
+        ></SeasonCollectionItem>
       </Wrapper>
     </Container>
   );
 }
 
-export default Collections;
+export default SeasonCollections;
 
 const Wrapper = styled.div`
   margin-top: 6rem;

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../modules/common/components/Layout";
-import Collections from "../modules/home/components/Collections";
+import SeasonCollections from "../modules/home/components/SeasonCollections";
 import MainOverlayImage from "../modules/home/components/MainOverlayImage";
 import Info from "../modules/home/components/Info";
 import AgeCollections from "../modules/home/components/AgeCollections";
@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
       <Layout>
         <MainOverlayImage />
-        <Collections />
+        {/* <SeasonCollections /> */}
         <AgeCollections />
         <Info />
       </Layout>

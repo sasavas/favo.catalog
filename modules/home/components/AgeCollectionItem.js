@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function AgeCollectionItem({ imgSrc, imgAlt, title }) {
   return (
-    <Link href="/ProductListing">
+    <Link href="/products">
       <a>
         <Wrapper>
           <Image src={imgSrc} alt={imgAlt || "boy"} width="100%"></Image>

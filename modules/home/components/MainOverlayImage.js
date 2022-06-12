@@ -25,10 +25,10 @@ const MainOverlayImage = () => {
         <div className="overlayContent">
           <h2>{see2022SummerCollection}</h2>
           <div className="buttonContainer">
-            <Link href="#">
+            <Link href="/products">
               <a className="catalogBtn">{seeProducts}</a>
             </Link>
-            <Link href="#">
+            <Link href="https://wa.me/00905435236345">
               <a className="whatsappBtn">
                 <Image
                   src="/icons/whatsapp.png"

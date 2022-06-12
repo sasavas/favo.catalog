@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import Image from "../components/Image";
-import Link from "next/link";
+import Image from "./Image";
 import CustomLink from "./CustomLink";
 
 const CardOverlayImage = ({
@@ -9,6 +8,7 @@ const CardOverlayImage = ({
   title,
   detail,
   buttonText,
+  href,
 }) => {
   return (
     <Wrapper>
@@ -23,7 +23,7 @@ const CardOverlayImage = ({
         <div className="overlayContent">
           <h3 className="title">{title}</h3>
           <p className="detail">{detail}</p>
-          <CustomLink href="#" text={buttonText}></CustomLink>
+          <CustomLink href={href ?? "#"} text={buttonText}></CustomLink>
         </div>
       </div>
     </Wrapper>
