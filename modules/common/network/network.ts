@@ -1,12 +1,13 @@
-const BASE_URL = "https://favo-be.herokuapp.com/";
+const BASE_URL = "http://localhost:4000";
 
 interface PaginationData {
   pageNumber?: number;
 }
-export function getProductsWPagination(paginationData: PaginationData): string {
-  const PAGE_SIZE = 2;
-  return (
-    BASE_URL + "/products?pageNumber=" + paginationData.pageNumber ??
-    0 + "&pageSize=" + PAGE_SIZE
-  );
+export function getProductsPathWPagination(
+  paginationData: PaginationData
+): string {
+  const PAGE_SIZE = 20;
+  return `${BASE_URL}/products?pageNumber=${
+    paginationData.pageNumber ?? 0
+  }&pageSize=${PAGE_SIZE}`;
 }

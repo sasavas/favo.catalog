@@ -1,91 +1,105 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import getImageUrl from "../../lib/getImageUrl";
 import ProductListLayout from "../../modules/products/components/ProductListsLayout";
+import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
+import { useInfiniteQuery } from "react-query";
+import { useInView } from "react-intersection-observer";
+import { getProductsPathWPagination } from "../../modules/common/network/network.ts";
+import { makeListProductsWImages } from "../../modules/products/services/MakeProductListWImages";
 
-/**
- *
- * @param {products} products this value is returned from
- * the getServerSideProps function below and passed here
- */
-function ProductListing({ products }) {
+function ProductListing() {
+  const { ref, inView } = useInView({ threshold: 0 });
+
+  const {
+    status,
+    data,
+    error,
+    isFetching,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteQuery("products", fetchResults, {
+    getNextPageParam: (lastPage) => {
+      console.log("last page", lastPage);
+      const nextPageNumber = lastPage.info.pageNumber + 1,
+        totalPages = lastPage.info.totalPages;
+      const pageLeft = nextPageNumber <= totalPages;
+      return pageLeft ? nextPageNumber : undefined;
+    },
+  });
+
+  async function fetchResults({ pageParam }) {
+    const res = await axios.get(
+      getProductsPathWPagination({ pageNumber: pageParam })
+    );
+    res.data.products = await makeListProductsWImages(res.data.products);
+    console.log("res", res);
+    //return the whole result of the query (both result array and meta info)
+    return res.data;
+  }
+
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView]);
+
   return (
     <ProductListLayout>
       <Wrapper>
         <h1>2022 Yaz Kreasyonu</h1>
-        <Gallery>
-          {products ? (
-            products.map((p) => {
-              return (
-                <Product key={p._id}>
-                  <Link href={`/ProductDetails/${p._id}`}>
-                    <a>
-                      <div className="productImage">
-                        <Image
-                          src={p.imageUrl}
-                          alt={p.name}
-                          objectFit="contain"
-                          layout="responsive"
-                          width={200}
-                          height={300}
-                        />
-                      </div>
-                      <div className="productInfo">
-                        <div className="productDetails">
-                          <div>
-                            <span id="code">{p.code} </span>
-                            <span id="name">{p.name}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </Link>
-                </Product>
-              );
-            })
-          ) : (
-            <p>Getting products</p>
-          )}
-        </Gallery>
+        {status === "loading" ? (
+          <p>Loading...</p>
+        ) : status === "error" ? (
+          <p>Error... {error.message} </p>
+        ) : (
+          <>
+            <Gallery>
+              {data.pages.map((page) => {
+                return (
+                  <React.Fragment key={page.nextId}>
+                    {page.products.map((p) => {
+                      return (
+                        <Product key={p._id}>
+                          <Link href={`/ProductDetails/${p._id}`}>
+                            <a>
+                              <div className="productImage">
+                                <Image
+                                  src={p.imageUrl}
+                                  alt={p.name}
+                                  objectFit="contain"
+                                  layout="responsive"
+                                  width={200}
+                                  height={300}
+                                />
+                              </div>
+                              <div className="productInfo">
+                                <div className="productDetails">
+                                  <div>
+                                    <span id="code">{p.code} </span>
+                                    <span id="name">{p.name}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </a>
+                          </Link>
+                        </Product>
+                      );
+                    })}
+                  </React.Fragment>
+                );
+              })}
+            </Gallery>
+            <div ref={ref} className="ref-page-ending"></div>
+          </>
+        )}
       </Wrapper>
     </ProductListLayout>
   );
 }
-
-export async function getServerSideProps() {
-  // fetch products from api
-  // get images from firebase
-
-  const response = await fetch("https://favo-be.herokuapp.com/products");
-  const result = await response.json();
-  const products = result.products;
-
-  let pWImages = await makeListProductsWImages(products);
-  pWImages.sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
-
-  return {
-    props: {
-      products: pWImages,
-    },
-  };
-}
-
-const makeListProductsWImages = async (productArr) => {
-  // get each image's url and add the new product to the new list
-  // it only gets the main image
-  // other (color) images will be fetched on the single product page
-  let result = [];
-  for (let i = 0; i < productArr.length; i++) {
-    const url = await getImageUrl(productArr[i].imagePath);
-    const pWUrl = { ...productArr[i], imageUrl: url };
-    result.push(pWUrl);
-  }
-
-  return result;
-};
 
 const Wrapper = styled.div`
   text-align: center;
@@ -93,12 +107,18 @@ const Wrapper = styled.div`
   h1 {
     margin-bottom: 2rem;
   }
+
+  .ref-page-ending {
+    display: block;
+    /* this ref element is used to trigger more product fetch without */
+    height: 16rem;
+    margin-top: -10rem;
+  }
 `;
 
 const Gallery = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-bottom: 6rem;
 
   @media screen and (max-width: 900px) {
     grid-template-columns: 1fr 1fr 1fr;

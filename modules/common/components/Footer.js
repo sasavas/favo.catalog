@@ -114,13 +114,13 @@ const Wrapper = styled.div`
   }
 
   h4 {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     font-size: 1.6rem;
   }
 
   .item {
     display: block;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
   }
 
   .content {
