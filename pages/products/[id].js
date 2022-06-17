@@ -6,7 +6,12 @@ const ProductDetails = () => {
 
   //TODO: implement react-query here
 
-  return <div>Product Details: This page will be available soon</div>;
+  return (
+    <Layout>
+      <p>Product Details: This page will be available soon</p>
+      <p>Urun Detaylari: Bu sayfa yapim asamasindadir.</p>
+    </Layout>
+  );
 };
 
 export default ProductDetails;
