@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Layout from "../../modules/common/components/Layout";
 
 const ProductDetails = () => {
   const router = useRouter();
