@@ -1,37 +1,12 @@
-/**
- * !IMPORTANT Keep this file and implement it for product pages
- */
+import { useRouter } from "next/router";
 
-import Layout from "../../modules/common/components/Layout";
+const ProductDetails = () => {
+  const router = useRouter();
+  const { productId } = router.query;
 
-export default function Post({ productData }) {
-  return (
-    <Layout>
-      {/*Do something with the product data here*/}
-      <p>{productData.name}</p>
-    </Layout>
-  );
-}
+  //TODO: implement react-query here
 
-export async function getStaticPaths() {
-  // get product ids from db
-  return {
-    paths: [{ params: { id: "productId1" } }, { params: { id: "productId2" } }],
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  // populate the prop productData with the given id in params for this page
-  return {
-    props: {
-      productData: getProductById(params.id),
-    },
-  };
-}
-
-const getProductById = (id) => {
-  return {
-    name: "product Name",
-  };
+  return <div>Product Details: This page will be available soon</div>;
 };
+
+export default ProductDetails;

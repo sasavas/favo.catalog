@@ -60,11 +60,11 @@ function ProductListing() {
             <Gallery>
               {data.pages.map((page) => {
                 return (
-                  <React.Fragment key={page.nextId}>
+                  <React.Fragment key={page.info.pageNumber}>
                     {page.products.map((p) => {
                       return (
                         <Product key={p._id}>
-                          <Link href={`/ProductDetails/${p._id}`}>
+                          <Link href={`/products/${p._id}`}>
                             <a>
                               <div className="productImage">
                                 <Image
@@ -110,7 +110,7 @@ const Wrapper = styled.div`
 
   .ref-page-ending {
     display: block;
-    /* this ref element is used to trigger more product fetch without */
+    /* this ref element is used to trigger more product fetch */
     height: 16rem;
     margin-top: -10rem;
   }

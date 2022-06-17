@@ -1,4 +1,8 @@
-const BASE_URL = "http://localhost:4000";
+// TODO: arrange this as per env variables
+// when deployed use favo-bee.herokou.....
+const BASE_URL = process.env.API_ROUTE;
+
+console.log("BASE_URL", BASE_URL);
 
 interface PaginationData {
   pageNumber?: number;
