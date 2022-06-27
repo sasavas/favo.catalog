@@ -5,7 +5,7 @@ import {
   buttonTexts,
   seeCollections,
   titles,
-} from "../../../constants/strings";
+} from "../../../lib/constants/strings";
 import { useRouter } from "next/router";
 
 function SeasonCollections() {

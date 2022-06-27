@@ -13,23 +13,21 @@ import { makeListProductsWImages } from "../../modules/products/services/MakePro
 function ProductListing() {
   const { ref, inView } = useInView({ threshold: 0 });
 
-  const {
-    status,
-    data,
-    error,
-    isFetching,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useInfiniteQuery("products", fetchResults, {
-    getNextPageParam: (lastPage) => {
-      console.log("last page", lastPage);
-      const nextPageNumber = lastPage.info.pageNumber + 1,
-        totalPages = lastPage.info.totalPages;
-      const pageLeft = nextPageNumber <= totalPages;
-      return pageLeft ? nextPageNumber : undefined;
-    },
-  });
+  const { status, data, error, fetchNextPage } = useInfiniteQuery(
+    "products",
+    fetchResults,
+    {
+      getNextPageParam: (lastPage) => {
+        console.log("last page", lastPage);
+        const nextPageNumber = lastPage.info.pageNumber + 1,
+          totalPages = lastPage.info.totalPages;
+        const pageLeft = nextPageNumber <= totalPages;
+        return pageLeft ? nextPageNumber : undefined;
+      },
+      cacheTime: 60,
+      refetchOnWindowFocus: false,
+    }
+  );
 
   async function fetchResults({ pageParam }) {
     const res = await axios.get(
@@ -93,6 +91,7 @@ function ProductListing() {
                 );
               })}
             </Gallery>
+            {/* this will be used as reference element to trigger refetch */}
             <div ref={ref} className="ref-page-ending"></div>
           </>
         )}

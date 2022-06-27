@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { mainNavLinks } from "../../../constants/strings";
+import { mainNavLinks } from "../../../lib/constants/strings";
 import { useRouter } from "next/router";
 import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";

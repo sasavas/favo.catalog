@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Container from "../../common/components/Container";
 import AgeCollectionItem from "./AgeCollectionItem";
-import { titles } from "../../../constants/strings";
+import { titles } from "../../../lib/constants/strings";
 import { useRouter } from "next/router";
 
 function AgeCollections() {
