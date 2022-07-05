@@ -9,12 +9,14 @@ const MainOverlayImage = () => {
   const isSmallScreen = useMediaQuery(768);
   const { locale } = useRouter();
   const { seeProducts } = buttonTexts[locale];
-  const { see2022SummerCollection } = seeCollections[locale];
+  const { see2022SpringCollection } = seeCollections[locale];
 
   return (
-    <Wrapper>
+    <Wrapper contentPosition="right">
       <Image
-        src="/images/boy-colorful-photoshoot.jpg"
+        src="/images/banner-spring-bw.jpg"
+        // /images/banner-spring-umbrella.jpg
+        // /images/banner-spring-boy-red.jpg
         alt="Boy colorful photo"
         width="100%"
         height={isSmallScreen ? "24rem" : "calc(100vh - 65px - 3.2rem)"}
@@ -23,7 +25,9 @@ const MainOverlayImage = () => {
       ></Image>
       <div className="overlay">
         <div className="overlayContent">
-          <h2>{see2022SummerCollection}</h2>
+          <div className="titleContainer">
+            <h2>{see2022SpringCollection}</h2>
+          </div>
           <div className="buttonContainer">
             <Link href="/products">
               <a className="catalogBtn">{seeProducts}</a>
@@ -65,19 +69,30 @@ const Wrapper = styled.div`
 
     .overlayContent {
       position: absolute;
-      left: 6rem;
+      right: 6rem;
       bottom: 4rem;
 
-      h2 {
-        font-size: 4rem;
-        color: white;
-        width: 50%;
-        margin-bottom: 2rem;
+      .titleContainer {
+        width: 100%;
+        display: flex;
+        justify-content: ${(props) =>
+          props.contentPosition === "right" ? "end" : "start"};
+
+        h2 {
+          font-size: 4rem;
+          color: white;
+          width: 50%;
+          margin-bottom: 2rem;
+          text-align: ${(props) =>
+            props.contentPosition === "right" ? "right" : "left"};
+        }
       }
 
       .buttonContainer {
         display: flex;
         gap: 2rem;
+        justify-content: ${(props) =>
+          props.contentPosition === "right" ? "end" : "start"};
 
         > * {
           color: white;
@@ -111,8 +126,10 @@ const Wrapper = styled.div`
       .overlayContent {
         left: 4rem;
 
-        h2 {
-          font-size: 3rem;
+        .titleContainer {
+          h2 {
+            font-size: 3rem;
+          }
         }
       }
     }
@@ -121,8 +138,10 @@ const Wrapper = styled.div`
       .overlayContent {
         left: 1rem;
 
-        h2 {
-          font-size: 2rem;
+        .titleContainer {
+          h2 {
+            font-size: 2rem;
+          }
         }
       }
     }
