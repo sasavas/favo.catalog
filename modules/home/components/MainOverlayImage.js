@@ -12,9 +12,10 @@ const MainOverlayImage = () => {
   const { see2022SpringCollection } = seeCollections[locale];
 
   return (
-    <Wrapper contentPosition="right">
+    <Wrapper contentPosition="left" dim={0.2}>
       <Image
-        src="/images/banner-spring-bw.jpg"
+        src="/images/banner-spring-boy-red.jpg"
+        // /images/banner-spring-bw.jpg
         // /images/banner-spring-umbrella.jpg
         // /images/banner-spring-boy-red.jpg
         alt="Boy colorful photo"
@@ -65,7 +66,7 @@ const Wrapper = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(10, 10, 10, 0.02);
+    background-color: rgba(10, 10, 10, ${(props) => props.dim ?? 0.1});
 
     .overlayContent {
       position: absolute;
@@ -105,7 +106,7 @@ const Wrapper = styled.div`
           background-color: #61ce70;
 
           &:hover {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
           }
         }
 
