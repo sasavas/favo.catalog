@@ -11,12 +11,16 @@ function Contact() {
         <span>+905435236345</span>
       </StyledDiv>
       <StyledDiv>
+        <Icon imagePath="/icons/phone.png" altText="Phone" />
+        <span>+905532677748</span>
+      </StyledDiv>
+      <StyledDiv>
         <Icon imagePath="/icons/email.png" altText="Email address" />
-        <span>contact@favokids.com</span>
+        <span>muhasebe.favo@gmail.com</span>
       </StyledDiv>
       <StyledDiv>
         <Icon imagePath="/icons/address.png" altText="address" />
-        <span>Yunusemre Mh. 2. Yenibag Sk. No: 23/1 Yıldırım/Bursa TURKEY</span>
+        <span>Yunusemre Mh. 2. Kıyıcı Sk. No: 24/A Yıldırım/Bursa TURKEY</span>
       </StyledDiv>
       <StyledDiv>
         <iframe
