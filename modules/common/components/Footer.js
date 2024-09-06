@@ -23,21 +23,6 @@ export default function Footer() {
     <Wrapper>
       <Container>
         <div className="content">
-          {/* <div className="categories">
-            <h4>{categories}</h4>
-            <Link href="#">
-              <a className="item">{allCollection}</a>
-            </Link>
-            <Link href="#">
-              <a className="item">{months}</a>
-            </Link>
-            <Link href="#">
-              <a className="item">{_2_5_age}</a>
-            </Link>
-            <Link href="#">
-              <a className="item">{_6_9_age}</a>
-            </Link>
-          </div> */}
           <div className="followUs">
             <h4>{followUs}</h4>
             <div className="socialIcons">
@@ -131,10 +116,6 @@ const Wrapper = styled.div`
     justify-content: space-between;
     gap: 2rem;
 
-    .categories {
-      flex: 1;
-    }
-
     .followUs {
       flex: 1;
 
@@ -165,6 +146,9 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+
     h4 {
       text-align: center;
     }
