@@ -44,8 +44,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   gap: 1rem;
   justify-content: space-around;
-
-  margin-bottom: 6rem;
+  margin-top: 6rem;
 
   @media (max-width: 768px) {
     flex-direction: column;

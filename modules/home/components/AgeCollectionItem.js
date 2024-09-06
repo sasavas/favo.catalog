@@ -7,8 +7,9 @@ export default function AgeCollectionItem({ imgSrc, imgAlt, title }) {
     <Link href="/products">
       <a>
         <Wrapper>
-          <Image src={imgSrc} alt={imgAlt || "boy"} width="100%"></Image>
-          <div className="overlay">
+          {/* <Image src={imgSrc} alt={imgAlt || "boy"} width="100%"></Image> */}
+          <div style={{
+          }}>
             <h4>{title}</h4>
           </div>
         </Wrapper>
@@ -19,6 +20,13 @@ export default function AgeCollectionItem({ imgSrc, imgAlt, title }) {
 
 const Wrapper = styled.div`
   position: relative;
+  margin-top: 2rem;
+  background: #CCC;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  padding-right:8rem;
+  padding-left: 8rem;
+
 
   &:hover {
     opacity: 0.8;

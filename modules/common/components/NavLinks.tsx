@@ -5,6 +5,7 @@ import { mainNavLinks } from "../../../lib/constants/strings";
 import { useRouter } from "next/router";
 import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
+import React from "react";
 
 function NavLinks() {
   const { locale } = useRouter();
@@ -27,9 +28,9 @@ function NavLinks() {
         <Link href="/">
           <a>{homepage}</a>
         </Link>
-        <Link href="/products">
+        {/* <Link href="/products">
           <a>{catalog}</a>
-        </Link>
+        </Link> */}
         <Link href="/AboutUs">
           <a>{aboutUs}</a>
         </Link>

@@ -4,21 +4,21 @@ import Container from "../../common/components/Container";
 
 function AboutUs({ title, children }) {
   return (
-    <Layout>
+    <div className="mainContent">
       <Container>
         <Wrapper>
           <h1>{title}</h1>
           {children}
         </Wrapper>
       </Container>
-    </Layout>
+    </div>
   );
 }
 
 export default AboutUs;
 
 const Wrapper = styled.div`
-  width: 60%;
+  /** width: 60%; */
   margin: 0 auto;
   min-height: calc(100vh - 12rem);
 

@@ -9,25 +9,26 @@ const MainOverlayImage = () => {
   const isSmallScreen = useMediaQuery(768);
   const { locale } = useRouter();
   const { seeProducts } = buttonTexts[locale];
-  const { see2022SpringCollection } = seeCollections[locale];
+  const { seeCurrentCollection } = seeCollections[locale];
 
   return (
     <Wrapper contentPosition="left" dim={0.2}>
       <Image
-        src="/images/banner-spring-boy-red.jpg"
+        src=
+        // "/images/banner-spring-boy-red.jpg"
         // /images/banner-spring-bw.jpg
-        // /images/banner-spring-umbrella.jpg
+        "/images/banner-spring-umbrella.jpg"
         // /images/banner-spring-boy-red.jpg
         alt="Boy colorful photo"
         width="100%"
         height={isSmallScreen ? "24rem" : "calc(100vh - 65px - 3.2rem)"}
         objectFit="cover"
-        objectPosition="right top"
+        objectPosition="left"
       ></Image>
       <div className="overlay">
         <div className="overlayContent">
           <div className="titleContainer">
-            <h2>{see2022SpringCollection}</h2>
+            <h2>{seeCurrentCollection}</h2>
           </div>
           <div className="buttonContainer">
             <Link href="/products">
