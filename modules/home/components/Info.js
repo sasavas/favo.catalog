@@ -10,28 +10,30 @@ function Info() {
     InfoTileTexts[locale];
 
   return (
-    <Container>
-      <Wrapper>
-        <InfoItem
-          imgSrc="/images/globe.png"
-          imgAlt="globe"
-          title="A global brand"
-          detail={youCanFindOurProducts}
-        ></InfoItem>
-        <InfoItem
-          imgSrc="/images/silhouette.png"
-          imgAlt="silhouette"
-          title="High quality"
-          detail={quality}
-        ></InfoItem>
-        <InfoItem
-          imgSrc="/images/tag.png"
-          imgAlt="tag"
-          title="Best offers"
-          detail={reasonablePrices}
-        ></InfoItem>
-      </Wrapper>
-    </Container>
+    <div className="mainContent section">
+      <Container>
+        <Wrapper>
+          <InfoItem
+            imgSrc="/images/globe.png"
+            imgAlt="globe"
+            title="A global brand"
+            detail={youCanFindOurProducts}
+          ></InfoItem>
+          <InfoItem
+            imgSrc="/images/silhouette.png"
+            imgAlt="silhouette"
+            title="High quality"
+            detail={quality}
+          ></InfoItem>
+          <InfoItem
+            imgSrc="/images/tag.png"
+            imgAlt="tag"
+            title="Best offers"
+            detail={reasonablePrices}
+          ></InfoItem>
+        </Wrapper>
+      </Container>
+    </div>
   );
 }
 
@@ -44,7 +46,6 @@ const Wrapper = styled.div`
   flex-direction: row;
   gap: 1rem;
   justify-content: space-around;
-  margin-top: 6rem;
 
   @media (max-width: 768px) {
     flex-direction: column;

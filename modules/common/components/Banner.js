@@ -38,6 +38,10 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+
+  .logo {
+    margin: auto;
+  }
 `;
 
 export default Banner;

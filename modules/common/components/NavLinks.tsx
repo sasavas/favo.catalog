@@ -19,24 +19,24 @@ function NavLinks() {
 
   return (
     <Wrapper>
-      <FiMenu
+      {/* <FiMenu
         className={`nav-icon ${showMenu ? "hide" : "show"}`}
         onClick={openMenu}
         size="42"
-      ></FiMenu>
+      ></FiMenu> */}
       <div className={`links ${showMenu ? "links__show" : "links__hide"}`}>
-        <Link href="/">
+        {/* <Link href="/">
           <a>{homepage}</a>
-        </Link>
+        </Link> */}
         {/* <Link href="/products">
           <a>{catalog}</a>
         </Link> */}
-        <Link href="/AboutUs">
+        {/* <Link href="/AboutUs">
           <a>{aboutUs}</a>
         </Link>
         <Link href="/Contact">
           <a>{contact}</a>
-        </Link>
+        </Link> */}
         <CgClose
           className={`close-icon ${showMenu ? "show" : "hide"}`}
           size={36}

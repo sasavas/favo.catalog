@@ -23,7 +23,7 @@ export default function Footer() {
     <Wrapper>
       <Container>
         <div className="content">
-          <div className="categories">
+          {/* <div className="categories">
             <h4>{categories}</h4>
             <Link href="#">
               <a className="item">{allCollection}</a>
@@ -37,7 +37,7 @@ export default function Footer() {
             <Link href="#">
               <a className="item">{_6_9_age}</a>
             </Link>
-          </div>
+          </div> */}
           <div className="followUs">
             <h4>{followUs}</h4>
             <div className="socialIcons">
@@ -106,6 +106,8 @@ export default function Footer() {
 const Wrapper = styled.div`
   background-color: #f5f5f5;
   padding: 2rem 0;
+  padding-left: 8rem;
+  padding-right: 8rem;
 
   a {
     &:hover {

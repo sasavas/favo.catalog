@@ -1,21 +1,20 @@
-import Layout from "../../common/components/Layout";
 import styled from "styled-components";
 import Container from "../../common/components/Container";
 
-function AboutUs({ title, children }) {
+function BlogPage({ title, children }) {
   return (
     <div className="mainContent">
       <Container>
         <Wrapper>
-          <h1>{title}</h1>
-          {children}
+          {/* <AboutUs/> */}
+          
         </Wrapper>
       </Container>
     </div>
   );
 }
 
-export default AboutUs;
+export default BlogPage;
 
 const Wrapper = styled.div`
   /** width: 60%; */
