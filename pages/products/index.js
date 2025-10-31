@@ -60,7 +60,6 @@ function ProductListing({ initialPage }) {
   return (
     <ProductListLayout>
       <Wrapper>
-        <h1>2022 Yaz Kreasyonu</h1>
         {status === "loading" ? (
           <p>Loading...</p>
         ) : status === "error" ? (
