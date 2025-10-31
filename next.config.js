@@ -5,7 +5,7 @@ module.exports = {
     API_ROUTE: process.env.API_ROUTE,
   },
   images: {
-    domains: ["firebasestorage.googleapis.com"],
+    domains: ["firebasestorage.googleapis.com", "files.joyolakids.com"],
   },
   i18n: {
     locales: ["en", "tr"],

@@ -1,49 +1,61 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import ProductListLayout from "../../modules/products/components/ProductListsLayout";
-import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
 import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
-import { getProductsPathWPagination } from "../../modules/common/network/network.ts";
-import { makeListProductsWImages } from "../../modules/products/services/MakeProductListWImages";
 
-function ProductListing() {
+const PAGE_SIZE = 20;
+
+function ProductListing({ initialPage }) {
   const { ref, inView } = useInView({ threshold: 0 });
+
+  // Client fetches from our Next.js API route (server-side proxy), not the external API
+  const fetchResults = async ({ pageParam = 0 }) => {
+    const res = await fetch(
+      `/api/public/products`
+    );
+
+    console.log(res);
+    if (!res.ok) throw new Error(`Failed to fetch products: ${res.status}`);
+    return res.json();
+  };
 
   const { status, data, error, fetchNextPage } = useInfiniteQuery(
     "products",
     fetchResults,
     {
       getNextPageParam: (lastPage) => {
-        console.log("last page", lastPage);
-        const nextPageNumber = lastPage.info.pageNumber + 1,
-          totalPages = lastPage.info.totalPages;
-        const pageLeft = nextPageNumber <= totalPages;
-        return pageLeft ? nextPageNumber : undefined;
+        const info = lastPage?.info || {};
+        const nextPageNumber = (info.pageNumber ?? -1) + 1;
+        if (info.hasNext === true) return nextPageNumber;
+        if (typeof info.totalPages === "number") {
+          const pageLeft = nextPageNumber <= info.totalPages;
+          return pageLeft ? nextPageNumber : undefined;
+        }
+        // Fallback: infer from page size
+        const hasMore =
+          Array.isArray(lastPage?.products) &&
+          lastPage.products.length === PAGE_SIZE;
+        return hasMore ? nextPageNumber : undefined;
       },
-      cacheTime: 60,
       refetchOnWindowFocus: false,
+      // hydrate with server-side first page
+      initialData: initialPage
+        ? {
+            pages: [initialPage],
+            pageParams: [initialPage?.info?.pageNumber ?? 0],
+          }
+        : undefined,
     }
   );
-
-  async function fetchResults({ pageParam }) {
-    const res = await axios.get(
-      getProductsPathWPagination({ pageNumber: pageParam })
-    );
-    res.data.products = await makeListProductsWImages(res.data.products);
-    console.log("res", res);
-    //return the whole result of the query (both result array and meta info)
-    return res.data;
-  }
 
   useEffect(() => {
     if (inView) {
       fetchNextPage();
     }
-  }, [inView]);
+  }, [inView, fetchNextPage]);
 
   return (
     <ProductListLayout>
@@ -60,9 +72,10 @@ function ProductListing() {
                 return (
                   <React.Fragment key={page.info.pageNumber}>
                     {page.products.map((p) => {
+                        console.log(p.imageUrl);
                       return (
-                        <Product key={p._id}>
-                          <Link href={`/products/${p._id}`}>
+                        <Product key={p.id}>
+                          <Link href={`/products/${p.id}`}>
                             <a>
                               <div className="productImage">
                                 <Image
@@ -98,6 +111,32 @@ function ProductListing() {
       </Wrapper>
     </ProductListLayout>
   );
+}
+
+export async function getServerSideProps(context) {
+  // Fetch the first page on the server to avoid exposing the external API
+  const pageNumber = 0;
+  const pageSize = PAGE_SIZE;
+  try {
+    const host = context?.req?.headers?.host || "localhost:3001";
+    const protocol = host.includes("localhost") ? "http" : "https";
+    const baseUrl = `${protocol}://${host}`;
+    const res = await fetch(
+      `${baseUrl}/api/products?pageNumber=${pageNumber}&pageSize=${pageSize}`
+    );
+    const data = await res.json();
+    return { props: { initialPage: data } };
+  } catch (e) {
+    // In case of failure, provide an empty dataset to render gracefully
+    return {
+      props: {
+        initialPage: {
+          products: [],
+          info: { pageNumber, totalPages: 0, hasNext: false },
+        },
+      },
+    };
+  }
 }
 
 const Wrapper = styled.div`
