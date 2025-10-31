@@ -5,56 +5,58 @@ import Link from "next/link";
 import Image from "next/image";
 import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
+import { useRouter } from "next/router";
 
 const PAGE_SIZE = 20;
 
 function ProductListing({ initialPage }) {
   const { ref, inView } = useInView({ threshold: 0 });
+  const router = useRouter();
+  const { query } = router;
 
-  // Client fetches from our Next.js API route (server-side proxy), not the external API
+  const buildQueryString = (pageParam) => {
+    const params = new URLSearchParams();
+    params.set("pageNumber", String(pageParam ?? 0));
+    params.set("pageSize", String(PAGE_SIZE));
+    if (query.season) params.set("season", String(query.season));
+    if (query.gender) params.set("gender", String(query.gender));
+    if (query.ageGroup) params.set("ageGroup", String(query.ageGroup));
+    return params.toString();
+  };
+
   const fetchResults = async ({ pageParam = 0 }) => {
-    const res = await fetch(
-      `/api/public/products`
-    );
-
-    console.log(res);
+    const qs = buildQueryString(pageParam);
+    const res = await fetch(`/api/products?${qs}`);
     if (!res.ok) throw new Error(`Failed to fetch products: ${res.status}`);
     return res.json();
   };
 
-  const { status, data, error, fetchNextPage } = useInfiniteQuery(
-    "products",
-    fetchResults,
-    {
-      getNextPageParam: (lastPage) => {
-        const info = lastPage?.info || {};
-        const nextPageNumber = (info.pageNumber ?? -1) + 1;
-        if (info.hasNext === true) return nextPageNumber;
-        if (typeof info.totalPages === "number") {
-          const pageLeft = nextPageNumber <= info.totalPages;
-          return pageLeft ? nextPageNumber : undefined;
-        }
-        // Fallback: infer from page size
-        const hasMore =
-          Array.isArray(lastPage?.products) &&
-          lastPage.products.length === PAGE_SIZE;
-        return hasMore ? nextPageNumber : undefined;
-      },
-      refetchOnWindowFocus: false,
-      // hydrate with server-side first page
-      initialData: initialPage
-        ? {
-            pages: [initialPage],
-            pageParams: [initialPage?.info?.pageNumber ?? 0],
-          }
-        : undefined,
-    }
-  );
+  const {
+    status,
+    data,
+    error,
+    fetchNextPage,
+  } = useInfiniteQuery(["products", query.season || "", query.gender || "", query.ageGroup || ""], fetchResults, {
+    getNextPageParam: (lastPage) => {
+      const info = lastPage?.info || {};
+      const nextPageNumber = (info.pageNumber ?? -1) + 1;
+      if (info.hasNext === true) return nextPageNumber;
+      if (typeof info.totalPages === "number") {
+        const pageLeft = nextPageNumber <= info.totalPages;
+        return pageLeft ? nextPageNumber : undefined;
+      }
+      const hasMore = Array.isArray(lastPage?.products) && lastPage.products.length === PAGE_SIZE;
+      return hasMore ? nextPageNumber : undefined;
+    },
+    refetchOnWindowFocus: false,
+    // hydrate with server-side first page
+    initialData: initialPage
+      ? { pages: [initialPage], pageParams: [initialPage?.info?.pageNumber ?? 0] }
+      : undefined,
+  });
 
   useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
+    if (inView) fetchNextPage();
   }, [inView, fetchNextPage]);
 
   return (
@@ -67,43 +69,37 @@ function ProductListing({ initialPage }) {
         ) : (
           <>
             <Gallery>
-              {data.pages.map((page) => {
-                return (
-                  <React.Fragment key={page.info.pageNumber}>
-                    {page.products.map((p) => {
-                        console.log(p.imageUrl);
-                      return (
-                        <Product key={p.id}>
-                          <Link href={`/products/${p.id}`}>
-                            <a>
-                              <div className="productImage">
-                                <Image
-                                  src={p.imageUrl}
-                                  alt={p.name}
-                                  objectFit="contain"
-                                  layout="responsive"
-                                  width={200}
-                                  height={300}
-                                />
+              {data.pages.map((page) => (
+                <React.Fragment key={page.info.pageNumber}>
+                  {page.products.map((p) => (
+                    <Product key={p.id}>
+                      <Link href={`/products/${p.id}`}>
+                        <a>
+                          <div className="productImage">
+                            <Image
+                              src={p.imageUrl}
+                              alt={p.name}
+                              objectFit="contain"
+                              layout="responsive"
+                              width={200}
+                              height={300}
+                            />
+                          </div>
+                          <div className="productInfo">
+                            <div className="productDetails">
+                              <div>
+                                <span id="code">{p.code} </span>
+                                <span id="name">{p.name}</span>
                               </div>
-                              <div className="productInfo">
-                                <div className="productDetails">
-                                  <div>
-                                    <span id="code">{p.code} </span>
-                                    <span id="name">{p.name}</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                          </Link>
-                        </Product>
-                      );
-                    })}
-                  </React.Fragment>
-                );
-              })}
+                            </div>
+                          </div>
+                        </a>
+                      </Link>
+                    </Product>
+                  ))}
+                </React.Fragment>
+              ))}
             </Gallery>
-            {/* this will be used as reference element to trigger refetch */}
             <div ref={ref} className="ref-page-ending"></div>
           </>
         )}
@@ -113,20 +109,22 @@ function ProductListing({ initialPage }) {
 }
 
 export async function getServerSideProps(context) {
-  // Fetch the first page on the server to avoid exposing the external API
   const pageNumber = 0;
   const pageSize = PAGE_SIZE;
   try {
     const host = context?.req?.headers?.host || "localhost:3001";
     const protocol = host.includes("localhost") ? "http" : "https";
     const baseUrl = `${protocol}://${host}`;
-    const res = await fetch(
-      `${baseUrl}/api/products?pageNumber=${pageNumber}&pageSize=${pageSize}`
-    );
+    const params = new URLSearchParams();
+    params.set("pageNumber", String(pageNumber));
+    params.set("pageSize", String(pageSize));
+    if (context.query?.season) params.set("season", String(context.query.season));
+    if (context.query?.gender) params.set("gender", String(context.query.gender));
+    if (context.query?.ageGroup) params.set("ageGroup", String(context.query.ageGroup));
+    const res = await fetch(`${baseUrl}/api/products?${params.toString()}`);
     const data = await res.json();
     return { props: { initialPage: data } };
   } catch (e) {
-    // In case of failure, provide an empty dataset to render gracefully
     return {
       props: {
         initialPage: {

@@ -3,14 +3,19 @@ import Container from "../../common/components/Container";
 import Banner from "../../common/components/Banner";
 import styled from "styled-components";
 import Footer from "../../common/components/Footer";
+import FiltersSidebar from "./FiltersSidebar";
 
 function ProductListsLayout({ children }) {
   return (
     <Wrapper>
       <Banner></Banner>
       <Container>
-        {/* <div className="filterMenu">Filter Menu</div> */}
-        <div className="mainContent">{children}</div>
+        <div className="contentGrid">
+          <aside className="filterMenu" aria-label="Filters">
+            <FiltersSidebar />
+          </aside>
+          <main className="mainContent">{children}</main>
+        </div>
       </Container>
       <Footer />
     </Wrapper>
@@ -20,16 +25,32 @@ function ProductListsLayout({ children }) {
 export default ProductListsLayout;
 
 const Wrapper = styled.div`
-  .filterMenu {
-    background-color: #efefef;
-    padding: 1rem;
-    flex: 1;
-    min-width: 16rem;
+  .contentGrid {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: 2rem;
+    align-items: start;
     margin-top: 2.4rem;
   }
 
+  .filterMenu {
+    background-color: #efefef;
+    padding: 1rem;
+    min-width: 16rem;
+    border-radius: 0.4rem;
+  }
+
   .mainContent {
-    flex: 4;
-    margin-top: 2.4rem;
+    /* Main content area */
+  }
+
+  @media (max-width: 992px) {
+    .contentGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .filterMenu {
+      display: none;
+    }
   }
 `;

@@ -52,12 +52,12 @@ function buildInfo(meta, fallbackPageNumber, pageSize, itemsLength) {
 }
 
 export default async function handler(req, res) {
-  const { pageNumber = "0", pageSize = "20" } = req.query;
+  const { pageNumber = "0", pageSize = "20", season, gender, ageGroup } = req.query;
   const backendUrl = "http://localhost:5000/api/public/products";
 
   try {
     const { data } = await axios.get(backendUrl, {
-      params: { pageNumber, pageSize },
+      params: { pageNumber, pageSize, season, gender, ageGroup },
       // Ensure we never leak cookies or headers
       withCredentials: false,
       headers: { Accept: "application/json" },
@@ -93,4 +93,3 @@ export default async function handler(req, res) {
     res.status(status).json({ products: [], info: { pageNumber: Number(pageNumber), totalPages: 0, hasNext: false }, error: message });
   }
 }
-

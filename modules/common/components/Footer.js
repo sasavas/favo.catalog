@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 import Container from "./Container";
 import Image from "./Image";
 import { externalLinks } from "../../../lib/constants/network";
