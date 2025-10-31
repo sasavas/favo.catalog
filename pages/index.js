@@ -74,8 +74,8 @@ export default function Home({ initialPage }) {
                 <React.Fragment key={page.info.pageNumber}>
                   {page.products.map((p) => (
                     <Product key={p.id}>
-                      <Link href={`/products/${p.id}`}>
-                        <a>
+                      {/*<Link href={`/products/${p.id}`}>*/}
+                      {/*  <a>*/}
                           <div className="productImage">
                             <Image
                               src={p.imageUrl}
@@ -94,8 +94,8 @@ export default function Home({ initialPage }) {
                               </div>
                             </div>
                           </div>
-                        </a>
-                      </Link>
+                        {/*</a>*/}
+                      {/*</Link>*/}
                     </Product>
                   ))}
                 </React.Fragment>
