@@ -8,23 +8,17 @@ function Contact() {
       <Container>
         <Wrapper>
           <FlexWrapper>
-            <div style={{
-              flexGrow: 1,
-            }}>
+            <div style={{ flexGrow: 1 }}>
               <StyledDiv>
                 <Icon imagePath="/icons/phone.png" altText="Phone" />
                 <span>+905435236345</span>
-              </StyledDiv>
-              <StyledDiv>
-                <Icon imagePath="/icons/phone.png" altText="Phone" />
-                <span>+905532677748</span>
               </StyledDiv>
               <StyledDiv>
                 <Icon imagePath="/icons/email.png" altText="Email address" />
                 <span>muhasebe.favo@gmail.com</span>
               </StyledDiv>
               <StyledDiv>
-                <Icon imagePath="/icons/address.png" altText="address" />
+                <Icon imagePath="/icons/address.png" altText="Address" />
                 <span>Yunusemre Mh. 2. Kıyıcı Sk. No: 24/A Yıldırım/Bursa TURKEY</span>
               </StyledDiv>
             </div>
@@ -46,12 +40,11 @@ function Contact() {
 function Icon({ imagePath, altText }) {
   return (
     <Image
-      width="32"
-      height="32"
-      objectFit="contain"
+      width={32}
+      height={32}
       src={imagePath}
       alt={altText}
-    ></Image>
+    />
   );
 }
 
@@ -79,7 +72,6 @@ const Wrapper = styled.div`
     width: 90%;
   }
 `;
-
 
 const StyledDiv = styled.div`
   display: flex;

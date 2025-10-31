@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Footer from "../../common/components/Footer";
 import FiltersSidebar from "./FiltersSidebar";
 
-function ProductListsLayout({ children }) {
+function ProductListsLayout({ children, below }) {
   return (
     <Wrapper>
       <Banner></Banner>
@@ -17,6 +17,11 @@ function ProductListsLayout({ children }) {
           <main className="mainContent">{children}</main>
         </div>
       </Container>
+      {below && (
+        <div className="belowSections">
+          <Container>{below}</Container>
+        </div>
+      )}
       <Footer />
     </Wrapper>
   );
@@ -40,8 +45,8 @@ const Wrapper = styled.div`
     border-radius: 0.4rem;
   }
 
-  .mainContent {
-    /* Main content area */
+  .belowSections {
+    margin-top: 2rem;
   }
 
   @media (max-width: 992px) {
